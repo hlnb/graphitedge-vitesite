@@ -42,9 +42,13 @@
 &lt;script setup&gt;
 import { ref } from 'vue'
 
-const message = ref('Hello Vue!')
+const data = ref({
+  message: '',
+  todo: null
+});
+
 const updateMessage = () => {
-  message.value = 'Hello Developer!'
+  data.value.message = 'Hello Developer!'
 }
 &lt;/script&gt;
 
@@ -61,12 +65,12 @@ const updateMessage = () => {
 &lt;template&gt;
   &lt;div class="todo-app"&gt;
     &lt;input 
-      v-model="newTodo" 
+      v-model="data.todo" 
       @keyup.enter="addTodo"
       placeholder="Add a todo"
     &gt;
     &lt;ul&gt;
-      &lt;li v-for="todo in todos" :key="todo.id"&gt;
+      &lt;li v-for="todo in data.todos" :key="todo.id"&gt;
         {{ todo.text }}
       &lt;/li&gt;
     &lt;/ul&gt;
@@ -76,16 +80,18 @@ const updateMessage = () => {
 &lt;script setup&gt;
 import { ref } from 'vue'
 
-const newTodo = ref('')
-const todos = ref([])
+const data = ref({
+  todo: '',
+  todos: []
+});
 
 const addTodo = () => {
-  if (newTodo.value.trim()) {
-    todos.value.push({
+  if (data.value.todo.trim()) {
+    data.value.todos.push({
       id: Date.now(),
-      text: newTodo.value
+      text: data.value.todo
     })
-    newTodo.value = ''
+    data.value.todo = ''
   }
 }
 &lt;/script&gt;

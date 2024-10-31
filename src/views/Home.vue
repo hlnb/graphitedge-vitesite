@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { tutorials } from '../data/tutorials'
+import tutorials from '../data/tutorials'
 
 // Featured tutorials
 const recommendedTutorials = computed(() => [
