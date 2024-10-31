@@ -1,42 +1,25 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import HTML101 from './content/HTML101.vue'
-import ImagesLinks from './content/ImagesLinks.vue'
-import CSSBasics from './content/CSSBasics.vue'
-import PhotoGallery from './content/PhotoGallery.vue'
-import ContactForm from './content/ContactForm.vue'
-import VueBasics from './content/VueBasics.vue'
-import EleventyBasics from './content/EleventyBasics.vue'
-import WeatherWidget from './content/WeatherWidget.vue'
-import InteractiveMaps from './content/InteractiveMaps.vue'
-
-const tutorialComponents = {
-  'html101': HTML101,
-  'images-links': ImagesLinks,
-  'css-basics': CSSBasics,
-  'photo-gallery': PhotoGallery,
-  'contact-form': ContactForm,
-  'vue-basics': VueBasics,
-  'eleventy-basics': EleventyBasics,
-  'weather-widget': WeatherWidget,
-  'interactive-maps': InteractiveMaps
-} as const;
-
-const props = defineProps<{
-  tutorialId: string
-}>();
-
-const currentTutorial = computed(() => 
-  tutorialComponents[props.tutorialId as keyof typeof tutorialComponents]
-);
+import { tutorials } from '@/data/tutorials'
 </script>
 
 <template>
-  <component 
-    v-if="currentTutorial" 
-    :is="currentTutorial" 
-  />
-  <div v-else class="error">
-    Tutorial not found
+  <div class="space-y-12">
+    <section v-for="category in tutorials" :key="category.name">
+      <h2 class="text-2xl font-bold mb-6">{{ category.name }}</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <router-link
+          v-for="tutorial in category.items"
+          :key="tutorial.path"
+          :to="tutorial.path"
+          class="block bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow overflow-hidden"
+        >
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2">{{ tutorial.name }}</h3>
+            <p class="text-gray-600">{{ tutorial.description }}</p>
+          </div>
+        </router-link>
+      </div>
+    </section>
   </div>
 </template>

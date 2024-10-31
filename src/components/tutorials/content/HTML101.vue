@@ -410,7 +410,14 @@ const exercise = {
     }
   ],
   checkpoints: [
-    
+    'Verify all HTML files have proper doctype and meta tags',
+    'Check that semantic elements are used appropriately',
+    // ... other checkpoints ...
+  ],
+  extensions: [
+    'Add more detailed content to each section',
+    'Create additional pages for specific locations',
+    // ... other extensions ...
   ]
 };
 </script>
@@ -426,6 +433,43 @@ const exercise = {
         
         <div class="bg-gray-50 p-4 rounded-lg mb-4">
           <pre class="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto"><code>{{ tutorial.code }}</code></pre>
+        </div>
+      </section>
+
+      <section class="mt-12 space-y-8">
+        <h2 class="text-3xl font-bold">Practical Exercise</h2>
+        <div class="bg-blue-50 p-6 rounded-lg">
+          <h3 class="text-2xl font-semibold mb-4">{{ exercise.title }}</h3>
+          <p class="mb-6">{{ exercise.introduction }}</p>
+          
+          <!-- Exercise Steps -->
+          <div class="space-y-6">
+            <div v-for="step in exercise.steps" :key="step.name" class="bg-white p-6 rounded-lg shadow-sm">
+              <h4 class="text-xl font-semibold mb-3">{{ step.name }}</h4>
+              <p class="mb-4">{{ step.content }}</p>
+              <pre class="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto"><code>{{ step.code }}</code></pre>
+            </div>
+          </div>
+
+          <!-- Checkpoints -->
+          <div class="mt-8">
+            <h4 class="text-xl font-semibold mb-4">Checkpoints</h4>
+            <ul class="list-disc list-inside space-y-2">
+              <li v-for="checkpoint in exercise.checkpoints" :key="checkpoint">
+                {{ checkpoint }}
+              </li>
+            </ul>
+          </div>
+
+          <!-- Extension Ideas -->
+          <div class="mt-8">
+            <h4 class="text-xl font-semibold mb-4">Extension Ideas</h4>
+            <ul class="list-disc list-inside space-y-2">
+              <li v-for="extension in exercise.extensions" :key="extension">
+                {{ extension }}
+              </li>
+            </ul>
+          </div>
         </div>
       </section>
 
