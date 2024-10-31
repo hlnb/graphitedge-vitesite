@@ -7,10 +7,32 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#8d0000',
-        'primary-light': '#a62626',
-        'primary-dark': '#660000',
-        text: '#213640',
+        brand: {
+          white: 'rgb(255, 255, 255)',     // Primary white
+          gray: 'rgb(216, 216, 216)',      // Light gray
+          darkgray: 'rgb(77, 77, 77)',     // Dark gray
+          red: {
+            light: 'rgb(141, 0, 0)',       // Light red
+            DEFAULT: 'rgb(106, 8, 8)',      // Primary red
+            dark: 'rgb(162, 17, 17)',      // Dark red
+          }
+        },
+        accent: {
+          pink: 'rgb(255, 249, 251)',      // Light pink
+          green: {
+            light: '#C9E4CA',              // rgb(201, 228, 202)
+            DEFAULT: '#87BBA2',            // rgb(135, 187, 162)
+          },
+          blue: '#4B88A2',                 // rgb(75, 136, 162)
+          gray: {
+            light: '#D3D4D9',              // rgb(211, 212, 217)
+            DEFAULT: 'rgb(211, 212, 217)'  // Alternative reference
+          }
+        },
+        text: {
+          primary: 'rgb(115, 130, 144)',    // Main text color
+          dark: 'rgb(68, 68, 68)'           // Dark text color
+        }
       },
       typography: {
         DEFAULT: {

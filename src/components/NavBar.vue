@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
+import Logo from '../assets/logo.svg?component'
 
 const route = useRoute()
 const isMenuOpen = ref(false)
@@ -18,25 +19,28 @@ function toggleMenu() {
 </script>
 
 <template>
-  <nav class="bg-white shadow-md">
+  <nav class="bg-brand-gray shadow-md">
     <div class="max-w-7xl mx-auto px-4">
-      <div class="flex justify-between h-16">
+      <div class="flex justify-between h-20">
         <!-- Logo and main nav -->
         <div class="flex">
           <div class="flex-shrink-0 flex items-center">
-            <router-link to="/" class="text-xl font-bold text-primary">
-              GraphitEdge
+            <router-link to="/" class="flex items-center">
+              <Logo class="h-16 w-auto" />
+              <span class="sr-only">GraphitEdge</span>
             </router-link>
           </div>
           
           <!-- Desktop Navigation -->
-          <div class="hidden md:ml-6 md:flex md:space-x-4 md:items-center">
+          <div class="hidden md:ml-8 md:flex md:space-x-4 md:items-center">
             <router-link
               v-for="item in navigation"
               :key="item.path"
               :to="item.path"
               class="px-3 py-2 rounded-md text-sm font-medium transition-colors"
-              :class="route.path === item.path ? 'text-primary' : 'text-gray-600 hover:text-primary'"
+              :class="route.path === item.path 
+                ? 'text-text-dark bg-brand-white/10' 
+                : 'text-text-primary hover:text-text-dark hover:bg-brand-white/10'"
             >
               {{ item.name }}
             </router-link>
@@ -46,8 +50,8 @@ function toggleMenu() {
         <!-- Mobile menu button -->
         <div class="flex items-center md:hidden">
           <button
-            @click="toggleMenu"
-            class="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-primary focus:outline-none"
+            @click="isMenuOpen = !isMenuOpen"
+            class="inline-flex items-center justify-center p-2 rounded-md text-text-primary hover:text-text-dark hover:bg-brand-white/10 focus:outline-none"
           >
             <span class="sr-only">Open main menu</span>
             <svg
@@ -87,7 +91,9 @@ function toggleMenu() {
           :key="item.path"
           :to="item.path"
           class="block px-3 py-2 rounded-md text-base font-medium transition-colors"
-          :class="route.path === item.path ? 'text-primary' : 'text-gray-600 hover:text-primary'"
+          :class="route.path === item.path 
+            ? 'text-text-dark bg-brand-white/10' 
+            : 'text-text-primary hover:text-text-dark hover:bg-brand-white/10'"
           @click="isMenuOpen = false"
         >
           {{ item.name }}

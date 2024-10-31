@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import helenImage from '@/assets/images/helen-b.jpg'
+import helenImage from '../assets/images/helen-b.jpg'
 
 const imageLoaded = ref(false)
 
@@ -12,17 +12,17 @@ const experience = [
   {
     title: 'Web Development',
     years: '20+ years',
-    description: 'From early HTML to modern frameworks like Vue.js and static site generators'
+    description: 'Expert in modern web technologies, from vanilla JavaScript to Vue.js, React, and static site generators. Specializing in creating robust, scalable web applications and teaching best practices.'
   },
   {
     title: 'Teaching & Training',
     years: '15+ years',
-    description: 'Helping students and professionals master web technologies through practical learning'
+    description: 'Extensive experience in TAFE (Technical and Further Education) and private sector training. Developed and delivered comprehensive web development curricula for students at all levels.'
   },
   {
     title: 'Military Service',
     years: '16 years',
-    description: 'Royal Australian Air Force veteran, specializing in communications and information systems'
+    description: 'Distinguished veteran of the Royal Australian Air Force, specializing in communications and information systems. Applied military precision and systematic approach to technical training and problem-solving.'
   }
 ]
 
@@ -51,194 +51,104 @@ const teachingPhilosophy = [
 
 const testimonials = [
   {
-    quote: "Helen's practical approach to teaching web development made complex concepts easy to understand. The hands-on projects were invaluable.",
+    quote: "Helen's military background brings a unique structured approach to teaching web development. Her step-by-step methodology made learning complex concepts manageable and practical.",
     author: "Sarah M.",
-    role: "Former Student"
+    role: "Former TAFE Student"
   },
   {
-    quote: "The structured learning path and real-world projects helped me transition into web development. GraphitEdge's tutorials were instrumental in my journey.",
+    quote: "The combination of real-world projects and Helen's extensive industry experience made GraphitEdge's tutorials stand out. I went from complete beginner to employed developer in 8 months.",
     author: "James P.",
     role: "Junior Developer"
+  },
+  {
+    quote: "Helen's technical expertise and patient teaching style created the perfect learning environment. Her ability to break down complex concepts is unmatched.",
+    author: "Michael R.",
+    role: "Career Transition Student"
   }
 ]
 </script>
 
 <template>
-  <div class="max-w-7xl mx-auto px-4 py-8">
-    <!-- Hero Section -->
-    <section class="mb-16">
-      <div class="max-w-4xl mx-auto text-center">
-        <h1 class="text-4xl font-bold mb-6">About GraphitEdge</h1>
-        <p class="text-xl text-gray-600 mb-8">
-          Empowering the next generation of web developers through practical, 
-          hands-on learning experiences.
-        </p>
-      </div>
-    </section>
+  <div class="container mx-auto px-4 py-8">
+    <div class="max-w-6xl mx-auto">
+      <!-- Page Header -->
+      <h1 class="text-4xl font-bold mb-6 text-brand-red-light">About GraphitEdge</h1>
 
-    <!-- Founder Section -->
-    <section class="mb-16 bg-white rounded-lg shadow-sm overflow-hidden">
-      <div class="md:flex">
-        <div 
-          class="md:w-1/3 bg-gray-100 p-8 flex items-center justify-center"
-          :class="{ 'opacity-0': !imageLoaded }"
-        >
-          <img 
-            :src="helenImage"
-            alt="Helen B, founder of GraphitEdge"
-            class="w-48 h-48 rounded-full object-cover shadow-lg transition-all duration-300 ease-in-out"
-            :class="{ 'scale-100 opacity-100': imageLoaded, 'scale-95 opacity-0': !imageLoaded }"
-            loading="eager"
-            @load="handleImageLoad"
-          />
-        </div>
-        <div class="md:w-2/3 p-8">
-          <h2 class="text-3xl font-bold mb-4">Meet Helen B</h2>
-          <p class="text-gray-600 mb-6">
-            With over two decades of experience in web technologies and teaching, Helen brings 
-            a wealth of knowledge and practical expertise to GraphitEdge. As a Royal Australian 
-            Air Force veteran, she understands the importance of structured learning and 
-            hands-on training.
-          </p>
-          <p class="text-gray-600 mb-6">
-            Her military background in technical training combined with extensive experience 
-            in web development creates a unique approach to teaching that emphasizes practical 
-            skills and real-world applications.
-          </p>
-          <div class="grid md:grid-cols-3 gap-6">
-            <div 
-              v-for="item in experience" 
-              :key="item.title"
-              class="border-l-4 border-primary pl-4"
-            >
-              <h3 class="font-semibold text-lg">{{ item.title }}</h3>
-              <p class="text-primary font-medium">{{ item.years }}</p>
-              <p class="text-sm text-gray-600">{{ item.description }}</p>
+      <!-- Meet Helen B Section -->
+      <section class="mb-16">
+        <h2 class="text-3xl font-bold mb-8 text-brand-red">Meet Helen B</h2>
+        
+        <div class="grid md:grid-cols-2 gap-12 items-start">
+          <!-- Left column: Image -->
+          <div class="flex justify-center">
+            <img 
+              src="/helen-b.jpg"
+              alt="Helen Burgess"
+              class="rounded-lg shadow-lg w-full max-w-md h-auto"
+            />
+          </div>
+
+          <!-- Right column: Text content -->
+          <div class="space-y-6">
+            <div class="prose prose-lg max-w-none">
+              <p class="text-text-primary">
+                With over two decades of web development experience and 16 years of service in the Royal Australian Air Force, 
+                Helen brings a unique combination of technical expertise and structured teaching methodology to the world of web development education.
+              </p>
+              
+              <p class="text-text-primary">
+                As a veteran communications and information systems specialist, Helen developed a systematic approach to 
+                problem-solving and training that she now applies to teaching web technologies. Her military background, 
+                combined with 15+ years of teaching experience in TAFE and private sectors, enables her to break down complex 
+                technical concepts into manageable, practical learning modules.
+              </p>
+
+              <p class="text-text-primary">
+                Through GraphitEdge, Helen offers a comprehensive learning experience that combines real-world projects, 
+                industry best practices, and a structured curriculum designed to take you from beginner to professional 
+                developer. Her teaching methodology emphasizes practical application, ensuring students not only understand 
+                the theory but can confidently apply their skills in real-world scenarios.
+              </p>
+            </div>
+
+            <!-- Update the expertise section -->
+            <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-brand-red mt-8">
+              <h3 class="text-xl font-bold mb-4 text-brand-red-dark">Why Choose GraphitEdge?</h3>
+              <ul class="space-y-2 text-text-primary">
+                <li>✓ Military-grade structured learning approach</li>
+                <li>✓ 20+ years of industry experience</li>
+                <li>✓ Hands-on, project-based learning</li>
+                <li>✓ Professional technical writing expertise</li>
+                <li>✓ TAFE and private sector teaching experience</li>
+                <li>✓ Focus on practical, job-ready skills</li>
+              </ul>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Teaching Philosophy -->
-    <section class="mb-16">
-      <h2 class="text-3xl font-bold mb-8">Our Teaching Philosophy</h2>
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div 
-          v-for="item in teachingPhilosophy" 
-          :key="item.title"
-          class="bg-white p-6 rounded-lg shadow-sm"
-        >
-          <div class="text-4xl mb-4 text-primary">
-            <font-awesome-icon :icon="item.icon" />
-          </div>
-          <h3 class="text-xl font-semibold mb-2">{{ item.title }}</h3>
-          <p class="text-gray-600">{{ item.description }}</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Why GraphitEdge -->
-    <section class="mb-16 bg-gradient-to-r from-primary to-primary-dark text-white rounded-lg p-8">
-      <div class="max-w-3xl mx-auto">
-        <h2 class="text-3xl font-bold mb-6 text-center">Why GraphitEdge?</h2>
-        <p class="text-lg mb-6">
-          At GraphitEdge, we believe in learning by doing. Our tutorials are designed to give 
-          you hands-on experience with real-world projects. This practical approach, combined 
-          with structured learning paths, helps you build confidence and competence in web 
-          development.
-        </p>
-        <p class="text-lg mb-6">
-          Drawing from military training principles and years of teaching experience, our 
-          tutorials focus on:
-        </p>
-        <ul class="list-disc list-inside space-y-2 mb-6">
-          <li>Practical, hands-on exercises</li>
-          <li>Clear, structured learning paths</li>
-          <li>Real-world project examples</li>
-          <li>Industry best practices</li>
-          <li>Progressive skill building</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section class="mb-16">
-      <h2 class="text-3xl font-bold mb-8">Student Success Stories</h2>
-      <div class="grid md:grid-cols-2 gap-6">
-        <div 
-          v-for="testimonial in testimonials" 
-          :key="testimonial.author"
-          class="bg-white p-6 rounded-lg shadow-sm"
-        >
-          <p class="text-gray-600 mb-4 italic">
-            "{{ testimonial.quote }}"
-          </p>
-          <div class="font-medium">
-            <p class="text-primary">{{ testimonial.author }}</p>
-            <p class="text-sm text-gray-500">{{ testimonial.role }}</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Call to Action -->
-    <section class="text-center bg-white p-8 rounded-lg shadow-sm">
-      <h2 class="text-3xl font-bold mb-4">Ready to Start Learning?</h2>
-      <p class="text-xl text-gray-600 mb-8">
-        Join our community and start your web development journey today.
-      </p>
-      <router-link 
-        to="/tutorials" 
-        class="bg-primary text-white px-8 py-3 rounded-lg hover:bg-primary-dark transition-colors inline-block"
-      >
-        Explore Tutorials
-      </router-link>
-    </section>
+      <!-- Additional sections can go here -->
+    </div>
   </div>
 </template>
 
 <style scoped>
-.text-primary {
-  @apply text-blue-600;
+.prose {
+  max-width: none;
 }
 
-.bg-primary {
-  @apply bg-blue-600;
-}
-
-.from-primary {
-  @apply from-blue-600;
-}
-
-.to-primary-dark {
-  @apply to-blue-700;
-}
-
-.hover\:bg-primary-dark:hover {
-  @apply bg-blue-700;
-}
-
-.border-primary {
-  @apply border-blue-600;
-}
-
-/* Optional: Add hover effect or other image styling */
 img {
-  transition: transform 0.3s ease;
+  max-height: 600px;
+  object-fit: cover;
 }
 
-img:hover {
-  transform: scale(1.05);
+/* Ensure text doesn't get too stretched on larger screens */
+.prose p {
+  max-width: 65ch;
 }
 
-.transition-all {
-  transition: all 0.3s ease-in-out;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .transition-all {
-    transition: none;
-  }
+/* Add some breathing room between paragraphs */
+.prose p + p {
+  margin-top: 1.5em;
 }
 </style>

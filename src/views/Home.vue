@@ -210,7 +210,6 @@ const learningPath = [
     </section>
   </div>
 </template>
-
 <style scoped>
 .text-primary {
   @apply text-blue-600;

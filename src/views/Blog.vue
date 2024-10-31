@@ -1,193 +1,127 @@
-<script setup lang="ts">
-import { ref, computed } from 'vue'
-import { marked } from 'marked'
+<script setup>
+import { ref, onMounted } from 'vue'
+import { formatDate } from '../utils/formatters'
 
-interface BlogPost {
-  id: string;
-  title: string;
-  author: string;
-  date: string;
-  category: string;
-  content: string;
-}
+const posts = ref([])
+const featuredPosts = ref([])
+const loading = ref(true)
 
-// Sample blog posts with proper typing
-const posts = ref<BlogPost[]>([
-  {
-    id: '1',
-    title: 'Getting Started with Vue 3',
-    author: 'Elizabeth Burgess',
-    date: '2024-03-15',
-    category: 'Vue',
-    content: `
-# Getting Started with Vue 3
+onMounted(async () => {
+  try {
+    // Import all markdown files
+    const modules = import.meta.glob('../blog/*.md', { eager: true })
+    
+    // Transform the modules into post objects
+    const allPosts = Object.entries(modules).map(([path, module]) => {
+      const slug = path.split('/').pop().replace('.md', '')
+      return {
+        slug,
+        ...module.frontmatter
+      }
+    })
 
-Vue 3 brings exciting new features and improvements to the framework...
+    // Sort posts by date (most recent first)
+    const sortedPosts = allPosts.sort((a, b) => 
+      new Date(b.date) - new Date(a.date)
+    )
 
-## Composition API
-
-The Composition API is one of the most significant additions...
-    `
-  },
-  // Add more posts as needed
-]);
-
-const categories = computed(() => {
-  const uniqueCategories = new Set(posts.value.map(post => post.category))
-  return Array.from(uniqueCategories)
-});
-
-const selectedCategory = ref<string | null>(null);
-
-const filteredPosts = computed(() => {
-  if (!selectedCategory.value) return posts.value
-  return posts.value.filter(post => post.category === selectedCategory.value)
-});
-
-function formatDate(dateString: string): string {
-  return new Date(dateString).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  })
-}
-
-function renderMarkdown(content: string): string {
-  return marked(content)
-}
-
-function truncateContent(post: BlogPost): string {
-  const plainText = post.content.replace(/[#*`]/g, '').trim()
-  const words = plainText.split(' ')
-  if (words.length > 30) {
-    return words.slice(0, 30).join(' ') + '...'
+    // Separate featured posts
+    featuredPosts.value = sortedPosts.filter(post => post.featured)
+    posts.value = sortedPosts
+  } catch (error) {
+    console.error('Error loading blog posts:', error)
+  } finally {
+    loading.value = false
   }
-  return plainText
-}
+})
 </script>
 
 <template>
-  <div class="max-w-4xl mx-auto px-4 py-8">
-    <h1 class="text-4xl font-bold mb-8">Blog</h1>
-
-    <!-- Category Filter -->
-    <div class="mb-8 flex gap-2">
-      <button
-        @click="selectedCategory = null"
-        :class="[
-          'px-4 py-2 rounded-lg',
-          !selectedCategory
-            ? 'bg-primary text-white'
-            : 'bg-gray-100 hover:bg-gray-200'
-        ]"
-      >
-        All
-      </button>
-      <button
-        v-for="category in categories"
-        :key="category"
-        @click="selectedCategory = category"
-        :class="[
-          'px-4 py-2 rounded-lg',
-          selectedCategory === category
-            ? 'bg-primary text-white'
-            : 'bg-gray-100 hover:bg-gray-200'
-        ]"
-      >
-        {{ category }}
-      </button>
-    </div>
-
-    <!-- Blog Posts -->
-    <div class="space-y-8">
-      <article
-        v-for="post in filteredPosts"
-        :key="post.id"
-        class="bg-white rounded-lg shadow-md overflow-hidden"
-      >
-        <div class="p-6">
-          <div class="flex justify-between items-start mb-4">
-            <span class="inline-block px-3 py-1 text-sm bg-gray-100 rounded-full">
-              {{ post.category }}
-            </span>
-            <time class="text-sm text-gray-500">{{ formatDate(post.date) }}</time>
-          </div>
-          
-          <router-link :to="`/blog/${post.id}`">
-            <h2 class="text-2xl font-bold mb-2 hover:text-primary">{{ post.title }}</h2>
-          </router-link>
-          <p class="text-sm text-gray-500 mb-4">By {{ post.author }}</p>
-          
-          <div 
-            class="prose prose-sm max-w-none mb-4"
-            v-html="truncateContent(post)"
-          ></div>
-          
-          <router-link
-            :to="`/blog/${post.id}`"
-            class="inline-flex items-center text-primary hover:text-primary-dark"
-          >
-            Read more
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-4 w-4 ml-1"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <!-- Featured Posts Section -->
+    <section v-if="featuredPosts.length" class="mb-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">Featured Posts</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <article 
+          v-for="post in featuredPosts" 
+          :key="post.slug"
+          class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+        >
+          <router-link :to="`/blog/${post.slug}`">
+            <img 
+              :src="post.image" 
+              :alt="post.title"
+              class="w-full h-48 object-cover"
             >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">{{ post.title }}</h3>
+              <p class="text-gray-600 mb-4">{{ post.description }}</p>
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-gray-500">{{ formatDate(post.date) }}</span>
+                <div class="flex gap-2">
+                  <span 
+                    v-for="tag in post.tags" 
+                    :key="tag"
+                    class="px-2 py-1 text-xs bg-gray-100 text-gray-600 rounded-full"
+                  >
+                    {{ tag }}
+                  </span>
+                </div>
+              </div>
+            </div>
           </router-link>
-        </div>
-      </article>
-    </div>
+        </article>
+      </div>
+    </section>
 
-    <!-- No Posts Message -->
-    <div 
-      v-if="filteredPosts.length === 0" 
-      class="text-center py-8 text-gray-500"
-    >
-      No posts found in this category.
-    </div>
+    <!-- All Posts Section -->
+    <section>
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">All Posts</h2>
+      <div v-if="loading" class="text-center py-12">
+        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 mx-auto"></div>
+      </div>
+      
+      <div v-else class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <article 
+          v-for="post in posts" 
+          :key="post.slug"
+          class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+        >
+          <router-link :to="`/blog/${post.slug}`">
+            <img 
+              :src="post.image" 
+              :alt="post.title"
+              class="w-full h-48 object-cover"
+            >
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">{{ post.title }}</h3>
+              <p class="text-gray-600 mb-4">{{ post.description }}</p>
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-gray-500">{{ formatDate(post.date) }}</span>
+                <div class="flex gap-2">
+                  <span 
+                    v-for="tag in post.tags" 
+                    :key="tag"
+                    class="px-2 py-1 text-xs bg-gray-100 text-gray-600 rounded-full"
+                  >
+                    {{ tag }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </router-link>
+        </article>
+      </div>
+
+      <div v-if="!loading && posts.length === 0" class="text-center py-12">
+        <p class="text-gray-600">No blog posts found.</p>
+      </div>
+    </section>
   </div>
 </template>
 
-<style>
-.prose h1 {
-  @apply text-3xl font-bold mb-4;
-}
-
-.prose h2 {
-  @apply text-2xl font-bold mb-3 mt-6;
-}
-
-.prose p {
-  @apply mb-4;
-}
-
-.prose code {
-  @apply bg-gray-100 px-1 rounded;
-}
-
-/* For dynamic content */
-.prose :deep(h1) {
-  @apply text-3xl font-bold mb-4;
-}
-
-.prose :deep(h2) {
-  @apply text-2xl font-bold mb-3 mt-6;
-}
-
-.prose :deep(p) {
-  @apply mb-4;
-}
-
-.prose :deep(code) {
-  @apply bg-gray-100 px-1 rounded;
+<style scoped>
+.router-link-active {
+  @apply text-brand-red;
 }
 </style>
