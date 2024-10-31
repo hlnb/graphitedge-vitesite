@@ -1,199 +1,206 @@
 <script setup lang="ts">
-import { tutorials } from '../data/tutorials'
+import { ref, computed } from 'vue'
+import TutorialCard from '@/components/TutorialCard.vue'
 
-const learningTips = [
-  {
-    icon: 'bullseye',
-    title: 'Start with Fundamentals',
-    description: 'Build a strong foundation with HTML, CSS, and development tools'
-  },
-  {
-    icon: 'sync',
-    title: 'Practice Regularly',
-    description: 'Consistency is key - aim to code a little bit every day'
-  },
-  {
-    icon: 'project-diagram',
-    title: 'Build Projects',
-    description: 'Apply your learning by building the included practical exercises'
-  },
-  {
-    icon: 'users',
-    title: 'Learn by Teaching',
-    description: 'Reinforce your knowledge by explaining concepts to others'
-  }
+interface Tutorial {
+  path: string
+  title: string
+  description: string
+  level: string
+  tags: string[]
+  order: number
+  category: string
+}
+
+const categories = [
+  { id: 'all', name: 'All Tutorials' },
+  { id: 'fundamentals', name: 'Fundamentals' },
+  { id: 'interactive', name: 'Interactive Features' },
+  { id: 'advanced', name: 'Advanced Topics' }
 ]
 
-const pathHighlights = {
-  beginner: {
-    title: 'New to Web Development?',
-    description: 'Start with our Fundamentals track to build a strong foundation:',
-    steps: [
-      'Set up your development environment',
-      'Learn HTML structure and elements',
-      'Master working with images and links',
-      'Style your pages with CSS'
-    ]
+const selectedCategory = ref('all')
+
+const tutorials = ref<Tutorial[]>([
+  {
+    path: '/tutorials/HTML101',
+    title: 'HTML 101: Getting Started',
+    description: 'Learn the fundamentals of HTML and start building your first web pages.',
+    level: 'Beginner',
+    tags: ['HTML', 'Web Development'],
+    order: 1,
+    category: 'fundamentals'
   },
-  intermediate: {
-    title: 'Ready for Interactive Features?',
-    description: 'Build engaging user experiences with:',
-    steps: [
-      'Create responsive photo galleries',
-      'Build and style contact forms',
-      'Add user interactions',
-      'Implement responsive design'
-    ]
+  {
+    path: '/tutorials/CSSBasics',
+    title: 'CSS Basics',
+    description: 'Master the basics of CSS and start styling your web pages beautifully.',
+    level: 'Beginner',
+    tags: ['CSS', 'Web Development'],
+    order: 2,
+    category: 'fundamentals'
   },
-  advanced: {
-    title: 'Exploring Advanced Topics?',
-    description: 'Take your skills to the next level with:',
-    steps: [
-      'Learn Vue.js framework basics',
-      'Build with Eleventy static site generator',
-      'Create weather widgets with APIs',
-      'Implement interactive maps'
-    ]
+  {
+    path: '/tutorials/javascript-introduction',
+    title: 'Introduction to JavaScript',
+    description: 'Learn the fundamentals of JavaScript programming with hands-on examples and exercises.',
+    level: 'Beginner',
+    tags: ['JavaScript'],
+    order: 3,
+    category: 'fundamentals'
+  },
+  {
+    path: '/tutorials/VueBasics',
+    title: 'Vue.js Basics',
+    description: 'Get started with Vue.js and learn the fundamentals of this progressive framework.',
+    level: 'Intermediate',
+    tags: ['Vue.js', 'JavaScript'],
+    order: 4,
+    category: 'fundamentals'
+  },
+  {
+    path: '/tutorials/photo-gallery',
+    title: 'Building a Photo Gallery',
+    description: 'Create an interactive photo gallery using Vue.js and modern CSS techniques.',
+    level: 'Intermediate',
+    tags: ['Vue.js', 'CSS'],
+    order: 5,
+    category: 'interactive'
+  },
+  {
+    path: '/tutorials/ContactForm',
+    title: 'Building a Contact Form',
+    description: 'Learn how to create and validate a contact form using Vue.js.',
+    level: 'Intermediate',
+    tags: ['Vue.js', 'Forms'],
+    order: 6,
+    category: 'interactive'
+  },
+  {
+    path: '/tutorials/InteractiveMaps',
+    title: 'Creating Interactive Maps',
+    description: 'Build interactive maps using modern web technologies.',
+    level: 'Advanced',
+    tags: ['JavaScript', 'Maps'],
+    order: 7,
+    category: 'interactive'
+  },
+  {
+    path: '/tutorials/WeatherWidget',
+    title: 'Building a Weather Widget',
+    description: 'Create a dynamic weather widget using APIs and Vue.js.',
+    level: 'Intermediate',
+    tags: ['Vue.js', 'API'],
+    order: 8,
+    category: 'interactive'
+  },
+  {
+    path: '/tutorials/complex-functions',
+    title: 'Writing Complex Functions',
+    description: 'Learn advanced function concepts including higher-order functions, closures, recursion, and async functions.',
+    level: 'Advanced',
+    tags: ['JavaScript', 'Functions'],
+    order: 9,
+    category: 'advanced'
+  },
+  {
+    path: '/tutorials/EleventyBasics',
+    title: 'Getting Started with Eleventy',
+    description: 'Learn the basics of the Eleventy static site generator.',
+    level: 'Intermediate',
+    tags: ['Eleventy', 'Static Sites'],
+    order: 10,
+    category: 'advanced'
   }
-}
+])
+
+const getFundamentals = computed(() => {
+  return tutorials.value.filter(tutorial => tutorial.category === 'fundamentals')
+})
+
+const getInteractive = computed(() => {
+  return tutorials.value.filter(tutorial => tutorial.category === 'interactive')
+})
+
+const getAdvanced = computed(() => {
+  return tutorials.value.filter(tutorial => tutorial.category === 'advanced')
+})
+
+const filteredTutorials = computed(() => {
+  if (selectedCategory.value === 'all') {
+    return tutorials.value
+  }
+  return tutorials.value.filter(tutorial => tutorial.category === selectedCategory.value)
+})
 </script>
 
 <template>
-  <div class="max-w-7xl mx-auto px-4 py-8">
-    <!-- Introduction Section -->
-    <section class="mb-16">
-      <div class="text-center max-w-4xl mx-auto mb-12">
-        <h1 class="text-4xl font-bold mb-6">Web Development Tutorials</h1>
-        <p class="text-xl text-gray-600 mb-8">
-          Welcome to your web development journey! Our structured tutorials will guide you from 
-          the basics to building modern web applications. Each tutorial includes practical 
-          exercises and real-world projects.
-        </p>
-        <div class="flex justify-center gap-4">
-          <a 
-            href="#fundamentals" 
-            class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-primary-dark transition-colors"
-          >
-            Start Learning
-          </a>
-          <a 
-            href="#learning-path" 
-            class="border border-primary text-primary px-6 py-2 rounded-lg hover:bg-primary-light transition-colors"
-          >
-            View Learning Path
-          </a>
-        </div>
-      </div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <h1 class="text-4xl font-bold text-gray-900 mb-8">Tutorials</h1>
 
-      <!-- Learning Tips -->
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-        <div 
-          v-for="tip in learningTips" 
-          :key="tip.title"
-          class="bg-white p-6 rounded-lg shadow-sm text-center"
+    <!-- Category Tabs -->
+    <div class="border-b border-gray-200 mb-8">
+      <nav class="-mb-px flex space-x-8" aria-label="Tutorial Categories">
+        <button
+          v-for="category in categories"
+          :key="category.id"
+          @click="selectedCategory = category.id"
+          :class="[
+            selectedCategory === category.id
+              ? 'border-brand-red text-brand-red'
+              : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300',
+            'whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm'
+          ]"
         >
-          <div class="text-4xl mb-4 text-primary">
-            <font-awesome-icon :icon="tip.icon" />
-          </div>
-          <h3 class="text-lg font-semibold mb-2">{{ tip.title }}</h3>
-          <p class="text-gray-600">{{ tip.description }}</p>
+          {{ category.name }}
+        </button>
+      </nav>
+    </div>
+
+    <!-- Category Sections -->
+    <div v-if="selectedCategory === 'all'">
+      <!-- Fundamentals Section -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-semibold mb-6">Fundamentals</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <template v-for="tutorial in getFundamentals" :key="tutorial.path">
+            <TutorialCard :tutorial="tutorial" />
+          </template>
         </div>
       </div>
 
-      <!-- Learning Paths -->
-      <div id="learning-path" class="space-y-12 mb-16">
-        <div 
-          v-for="(path, key) in pathHighlights" 
-          :key="key"
-          class="bg-white p-8 rounded-lg shadow-sm"
-        >
-          <h2 class="text-2xl font-bold mb-4">{{ path.title }}</h2>
-          <p class="text-gray-600 mb-6">{{ path.description }}</p>
-          <ul class="grid md:grid-cols-2 gap-4">
-            <li 
-              v-for="step in path.steps" 
-              :key="step"
-              class="flex items-center space-x-2 text-gray-700"
-            >
-              <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <span>{{ step }}</span>
-            </li>
-          </ul>
+      <!-- Interactive Features Section -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-semibold mb-6">Interactive Features</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <template v-for="tutorial in getInteractive" :key="tutorial.path">
+            <TutorialCard :tutorial="tutorial" />
+          </template>
         </div>
       </div>
-    </section>
 
-    <!-- Tutorial Categories -->
-    <section id="fundamentals" class="space-y-16">
-      <div v-for="category in tutorials" :key="category.name">
-        <h2 class="text-3xl font-bold mb-8">{{ category.name }}</h2>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <router-link
-            v-for="tutorial in category.items"
-            :key="tutorial.path"
-            :to="tutorial.path"
-            class="block bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow overflow-hidden group"
-          >
-            <div class="p-6">
-              <h3 class="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">
-                {{ tutorial.name }}
-              </h3>
-              <p class="text-gray-600">{{ tutorial.description }}</p>
-            </div>
-          </router-link>
+      <!-- Advanced Topics Section -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-semibold mb-6">Advanced Topics</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <template v-for="tutorial in getAdvanced" :key="tutorial.path">
+            <TutorialCard :tutorial="tutorial" />
+          </template>
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- Encouragement Banner -->
-    <section class="mt-16 bg-gradient-to-r from-primary to-primary-dark text-white p-8 rounded-lg text-center">
-      <h2 class="text-2xl font-bold mb-4">Ready to Begin Your Journey?</h2>
-      <p class="text-lg mb-6">
-        Remember: every expert was once a beginner. Take it step by step, and you'll be 
-        amazed at what you can create!
-      </p>
-      <a 
-        href="#fundamentals" 
-        class="inline-block bg-white text-primary px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors"
-      >
-        Start with Fundamentals
-      </a>
-    </section>
+    <!-- Filtered View -->
+    <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <template v-for="tutorial in filteredTutorials" :key="tutorial.path">
+        <TutorialCard :tutorial="tutorial" />
+      </template>
+    </div>
   </div>
 </template>
 
 <style scoped>
-.text-primary {
-  @apply text-blue-600;
-}
-
-.text-primary-dark {
-  @apply text-blue-700;
-}
-
-.bg-primary {
-  @apply bg-blue-600;
-}
-
-.bg-primary-light {
-  @apply bg-blue-100;
-}
-
-.hover\:bg-primary-dark:hover {
-  @apply bg-blue-700;
-}
-
-.from-primary {
-  @apply from-blue-600;
-}
-
-.to-primary-dark {
-  @apply to-blue-700;
-}
-
-.border-primary {
-  @apply border-blue-600;
+.router-link-active {
+  @apply text-brand-red;
 }
 </style>

@@ -6,21 +6,21 @@ import { tutorials } from '../data/tutorials'
 const recommendedTutorials = computed(() => [
   {
     name: 'Development Setup',
-    path: '/tutorials/setup-tools',
+    path: '/tutorials/content/setup-tools',
     description: 'Get your development environment ready with essential tools',
     level: 'Beginner',
     duration: '30 mins'
   },
   {
     name: 'HTML Basics',
-    path: '/tutorials/html101',
+    path: '/tutorials/content/html101',
     description: 'Learn the fundamentals of HTML structure and elements',
     level: 'Beginner',
     duration: '45 mins'
   },
   {
     name: 'CSS Basics',
-    path: '/tutorials/css-basics',
+    path: '/tutorials/content/css-basics',
     description: 'Style your web pages with CSS',
     level: 'Beginner',
     duration: '1 hour'
@@ -33,7 +33,7 @@ const latestPosts = ref([
     title: 'Getting Started with Web Development in 2024',
     date: '2024-03-15',
     excerpt: 'A comprehensive guide to starting your web development journey...',
-    path: '/blog/getting-started-2024'
+    path: '/blog/getting-started-with-web-development'
   },
   {
     title: 'Why Vue.js is Perfect for Beginners',
@@ -207,6 +207,133 @@ const learningPath = [
       >
         Begin with Setup Guide
       </router-link>
+    </section>
+
+    <!-- Tutorial Section -->
+    <section class="py-12 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8">Latest Tutorials</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- HTML 101 -->
+          <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-900 mb-2">
+                <router-link 
+                  to="/tutorials/HTML101"
+                  class="hover:text-brand-red"
+                >
+                  HTML 101: Getting Started
+                </router-link>
+              </h3>
+              <p class="text-gray-600">Learn the fundamentals of HTML and start building your first web pages.</p>
+            </div>
+          </div>
+
+          <!-- CSS Basics -->
+          <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-900 mb-2">
+                <router-link 
+                  to="/tutorials/CSSBasics"
+                  class="hover:text-brand-red"
+                >
+                  CSS Basics
+                </router-link>
+              </h3>
+              <p class="text-gray-600">Master the basics of CSS and start styling your web pages.</p>
+            </div>
+          </div>
+
+          <!-- JavaScript Introduction -->
+          <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-900 mb-2">
+                <router-link 
+                  to="/tutorials/javascript-introduction"
+                  class="hover:text-brand-red"
+                >
+                  Introduction to JavaScript
+                </router-link>
+              </h3>
+              <p class="text-gray-600">Learn the fundamentals of JavaScript programming with hands-on examples.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-8">
+          <router-link 
+            to="/tutorials" 
+            class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-brand-red hover:bg-brand-red-dark"
+          >
+            View All Tutorials
+          </router-link>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8">Latest Blog Posts</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Building Responsive Websites -->
+          <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-900 mb-2">
+                <router-link 
+                  to="/blog/building-responsive-websites"
+                  class="hover:text-brand-red"
+                >
+                  Building Responsive Websites: Best Practices for 2024
+                </router-link>
+              </h3>
+              <p class="text-gray-600">Learn modern techniques and best practices for creating truly responsive websites.</p>
+              <div class="mt-4 text-sm text-gray-500">October 10, 2024</div>
+            </div>
+          </div>
+
+          <!-- Why Vue.js for Beginners -->
+          <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-900 mb-2">
+                <router-link 
+                  to="/blog/why-vuejs-for-beginners"
+                  class="hover:text-brand-red"
+                >
+                  Why Vue.js is Perfect for Beginners in 2024
+                </router-link>
+              </h3>
+              <p class="text-gray-600">Discover why Vue.js stands out as the ideal framework for beginners.</p>
+              <div class="mt-4 text-sm text-gray-500">July 15, 2024</div>
+            </div>
+          </div>
+
+          <!-- Getting Started with Web Development -->
+          <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-900 mb-2">
+                <router-link 
+                  to="/blog/getting-started-with-web-development"
+                  class="hover:text-brand-red"
+                >
+                  Getting Started with Web Development
+                </router-link>
+              </h3>
+              <p class="text-gray-600">A comprehensive guide for beginners starting their journey in web development.</p>
+              <div class="mt-4 text-sm text-gray-500">January 20, 2024</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-8">
+          <router-link 
+            to="/blog" 
+            class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-brand-red hover:bg-brand-red-dark"
+          >
+            View All Posts
+          </router-link>
+        </div>
+      </div>
     </section>
   </div>
 </template>

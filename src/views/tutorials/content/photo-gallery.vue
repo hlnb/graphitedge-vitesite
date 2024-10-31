@@ -89,7 +89,7 @@
           <li>Make forms user-friendly</li>
         </ul>
         <router-link 
-          to="/tutorials/contact-form"
+          to="/tutorials/ContactForm"
           class="inline-flex items-center text-primary hover:text-primary-dark transition-colors mt-4">
           Continue to "Contact Form Creation"
           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">

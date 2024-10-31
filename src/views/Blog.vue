@@ -1,124 +1,168 @@
-<script setup>
-import { ref, onMounted } from 'vue'
-import { formatDate } from '../utils/formatters'
-
-const posts = ref([])
-const featuredPosts = ref([])
-const loading = ref(true)
-
-onMounted(async () => {
-  try {
-    // Import all markdown files
-    const modules = import.meta.glob('../blog/*.md', { eager: true })
-    
-    // Transform the modules into post objects
-    const allPosts = Object.entries(modules).map(([path, module]) => {
-      const slug = path.split('/').pop().replace('.md', '')
-      return {
-        slug,
-        ...module.frontmatter
-      }
-    })
-
-    // Sort posts by date (most recent first)
-    const sortedPosts = allPosts.sort((a, b) => 
-      new Date(b.date) - new Date(a.date)
-    )
-
-    // Separate featured posts
-    featuredPosts.value = sortedPosts.filter(post => post.featured)
-    posts.value = sortedPosts
-  } catch (error) {
-    console.error('Error loading blog posts:', error)
-  } finally {
-    loading.value = false
-  }
-})
-</script>
-
 <template>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <!-- Featured Posts Section -->
-    <section v-if="featuredPosts.length" class="mb-12">
-      <h2 class="text-3xl font-bold text-gray-900 mb-6">Featured Posts</h2>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <article 
-          v-for="post in featuredPosts" 
-          :key="post.slug"
-          class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
-        >
-          <router-link :to="`/blog/${post.slug}`">
-            <img 
-              :src="post.image" 
-              :alt="post.title"
-              class="w-full h-48 object-cover"
+    <h1 class="text-4xl font-bold text-gray-900 mb-8">Blog Posts</h1>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Web Development Best Practices -->
+      <article class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+        <div class="p-6">
+          <h2 class="text-2xl font-bold text-gray-900 mb-2">
+            <router-link 
+              to="/blog/web-development-best-practices"
+              class="hover:text-brand-red"
             >
-            <div class="p-6">
-              <h3 class="text-xl font-semibold text-gray-900 mb-2">{{ post.title }}</h3>
-              <p class="text-gray-600 mb-4">{{ post.description }}</p>
-              <div class="flex items-center justify-between">
-                <span class="text-sm text-gray-500">{{ formatDate(post.date) }}</span>
-                <div class="flex gap-2">
-                  <span 
-                    v-for="tag in post.tags" 
-                    :key="tag"
-                    class="px-2 py-1 text-xs bg-gray-100 text-gray-600 rounded-full"
-                  >
-                    {{ tag }}
-                  </span>
-                </div>
-              </div>
+              Web Development Best Practices for 2024
+            </router-link>
+          </h2>
+          <p class="text-gray-600 mb-4">
+            Essential best practices and standards for modern web development, drawing from 20+ years of industry experience.
+          </p>
+          <div class="flex items-center justify-between">
+            <span class="text-sm text-gray-500">January 15, 2024</span>
+            <div class="flex space-x-2">
+              <span class="px-2 py-1 text-xs bg-gray-100 text-gray-600 rounded-full">Best Practices</span>
+              <span class="px-2 py-1 text-xs bg-gray-100 text-gray-600 rounded-full">Development</span>
             </div>
-          </router-link>
-        </article>
-      </div>
-    </section>
+          </div>
+        </div>
+      </article>
 
-    <!-- All Posts Section -->
-    <section>
-      <h2 class="text-3xl font-bold text-gray-900 mb-6">All Posts</h2>
-      <div v-if="loading" class="text-center py-12">
-        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 mx-auto"></div>
-      </div>
-      
-      <div v-else class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <article 
-          v-for="post in posts" 
-          :key="post.slug"
-          class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
-        >
-          <router-link :to="`/blog/${post.slug}`">
-            <img 
-              :src="post.image" 
-              :alt="post.title"
-              class="w-full h-48 object-cover"
+      <!-- Getting Started with Web Development -->
+      <article class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+        <div class="p-6">
+          <h2 class="text-2xl font-bold text-gray-900 mb-2">
+            <router-link 
+              to="/blog/getting-started-with-web-development"
+              class="hover:text-brand-red"
             >
-            <div class="p-6">
-              <h3 class="text-xl font-semibold text-gray-900 mb-2">{{ post.title }}</h3>
-              <p class="text-gray-600 mb-4">{{ post.description }}</p>
-              <div class="flex items-center justify-between">
-                <span class="text-sm text-gray-500">{{ formatDate(post.date) }}</span>
-                <div class="flex gap-2">
-                  <span 
-                    v-for="tag in post.tags" 
-                    :key="tag"
-                    class="px-2 py-1 text-xs bg-gray-100 text-gray-600 rounded-full"
-                  >
-                    {{ tag }}
-                  </span>
-                </div>
-              </div>
+              Getting Started with Web Development
+            </router-link>
+          </h2>
+          <p class="text-gray-600 mb-4">
+            A comprehensive guide for beginners starting their journey in web development, with a clear learning path and practical advice.
+          </p>
+          <div class="flex items-center justify-between">
+            <span class="text-sm text-gray-500">January 20, 2024</span>
+            <div class="flex space-x-2">
+              <span class="px-2 py-1 text-xs bg-gray-100 text-gray-600 rounded-full">Beginners</span>
+              <span class="px-2 py-1 text-xs bg-gray-100 text-gray-600 rounded-full">Tutorial</span>
             </div>
-          </router-link>
-        </article>
-      </div>
+          </div>
+        </div>
+      </article>
 
-      <div v-if="!loading && posts.length === 0" class="text-center py-12">
-        <p class="text-gray-600">No blog posts found.</p>
+      <!-- Transitioning to Tech -->
+      <article class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+        <div class="p-6">
+          <h2 class="text-2xl font-bold text-gray-900 mb-2">
+            <router-link 
+              to="/blog/transitioning-to-tech"
+              class="hover:text-brand-red"
+            >
+              Transitioning to Tech: A Guide for Career Changers
+            </router-link>
+          </h2>
+          <p class="text-gray-600 mb-4">
+            A practical guide for professionals making the transition into tech careers, based on real experience and success stories.
+          </p>
+          <div class="flex items-center justify-between">
+            <span class="text-sm text-gray-500">January 25, 2024</span>
+            <div class="flex space-x-2">
+              <span class="px-2 py-1 text-xs bg-gray-100 text-gray-600 rounded-full">Career</span>
+              <span class="px-2 py-1 text-xs bg-gray-100 text-gray-600 rounded-full">Guide</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Why Vue.js for Beginners -->
+      <article class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+        <div class="p-6">
+          <h2 class="text-2xl font-bold text-gray-900 mb-2">
+            <router-link 
+              to="/blog/why-vuejs-for-beginners"
+              class="hover:text-brand-red"
+            >
+              Why Vue.js is Perfect for Beginners in 2024
+            </router-link>
+          </h2>
+          <p class="text-gray-600 mb-4">
+            Discover why Vue.js stands out as the ideal framework for beginners, with its gentle learning curve and powerful features.
+          </p>
+          <div class="flex items-center justify-between">
+            <span class="text-sm text-gray-500">July 15, 2024</span>
+            <div class="flex space-x-2">
+              <span class="px-2 py-1 text-xs bg-gray-100 text-gray-600 rounded-full">Vue.js</span>
+              <span class="px-2 py-1 text-xs bg-gray-100 text-gray-600 rounded-full">Beginners</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Building Responsive Websites -->
+      <article class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+        <div class="p-6">
+          <h2 class="text-2xl font-bold text-gray-900 mb-2">
+            <router-link 
+              to="/blog/building-responsive-websites"
+              class="hover:text-brand-red"
+            >
+              Building Responsive Websites: Best Practices for 2024
+            </router-link>
+          </h2>
+          <p class="text-gray-600 mb-4">
+            Learn modern techniques and best practices for creating truly responsive websites that work seamlessly across all devices.
+          </p>
+          <div class="flex items-center justify-between">
+            <span class="text-sm text-gray-500">October 10, 2024</span>
+            <div class="flex space-x-2">
+              <span class="px-2 py-1 text-xs bg-gray-100 text-gray-600 rounded-full">CSS</span>
+              <span class="px-2 py-1 text-xs bg-gray-100 text-gray-600 rounded-full">Responsive</span>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- Newsletter Signup -->
+    <div class="mt-16 bg-gray-50 rounded-lg p-8">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Stay Updated</h2>
+        <p class="text-gray-600 mb-6">
+          Get the latest web development tips, tutorials, and best practices delivered to your inbox.
+        </p>
+        <form @submit.prevent="handleNewsletterSignup" class="flex gap-4 max-w-md mx-auto">
+          <input 
+            type="email" 
+            v-model="email"
+            placeholder="Enter your email"
+            class="flex-1 rounded-md border-gray-300 shadow-sm focus:border-brand-red focus:ring-brand-red"
+            required
+          >
+          <button 
+            type="submit"
+            class="px-4 py-2 bg-brand-red text-white rounded-md hover:bg-brand-red-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-red"
+          >
+            Subscribe
+          </button>
+        </form>
       </div>
-    </section>
+    </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from 'vue'
+
+const email = ref('')
+
+const handleNewsletterSignup = () => {
+  // Here you would typically handle the newsletter signup
+  console.log('Newsletter signup:', email.value)
+  alert('Thanks for subscribing! (Demo only)')
+  email.value = ''
+}
+</script>
 
 <style scoped>
 .router-link-active {
