@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
-import { useRoute } from 'vue-router'
+import { computed } from 'vue'
 import HTML101 from './content/HTML101.vue'
 import ImagesLinks from './content/ImagesLinks.vue'
 import CSSBasics from './content/CSSBasics.vue'
@@ -23,7 +22,6 @@ const tutorialComponents = {
   'interactive-maps': InteractiveMaps
 } as const;
 
-// If you're using route params to determine which tutorial to show:
 const props = defineProps<{
   tutorialId: string
 }>();

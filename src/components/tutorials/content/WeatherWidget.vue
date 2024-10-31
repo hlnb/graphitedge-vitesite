@@ -1,192 +1,164 @@
-<template>
-  <div class="max-w-4xl mx-auto">
-    <h1 class="text-3xl font-bold mb-6">Building a Weather Widget</h1>
-    
-    <div class="space-y-8">
-      <section>
-        <h2 class="text-2xl font-semibold mb-4">Project Setup</h2>
-        <p class="mb-4">First, let's install the required dependencies:</p>
-        <pre class="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto">npm install axios date-fns</pre>
-      </section>
+<script setup lang="ts">
+const tutorials = [
+  {
+    name: 'Setting Up Weather API',
+    content: 'First, get an API key from OpenWeatherMap and install axios:',
+    code: 'npm install axios'
+  },
+  {
+    name: 'Weather Interface',
+    content: 'Create interfaces for the weather data:',
+    code: `interface WeatherData {
+  temp: number;
+  humidity: number;
+  windSpeed: number;
+  description: string;
+  icon: string;
+}
 
-      <section>
-        <h2 class="text-2xl font-semibold mb-4">Creating the Weather Service</h2>
-        <p class="mb-4">Create a service to handle API calls:</p>
-        <pre class="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto">// src/services/weatherService.ts
+interface WeatherResponse {
+  main: {
+    temp: number;
+    humidity: number;
+  };
+  wind: {
+    speed: number;
+  };
+  weather: Array<{
+    description: string;
+    icon: string;
+  }>;
+}`
+  },
+  {
+    name: 'Creating the Weather Service',
+    content: 'Create a service to handle weather API calls:',
+    code: `// src/services/weather.ts
 import axios from 'axios'
 
 const API_KEY = import.meta.env.VITE_WEATHER_API_KEY
 const BASE_URL = 'https://api.openweathermap.org/data/2.5'
 
-export interface WeatherData {
-  temp: number
-  humidity: number
-  windSpeed: number
-  description: string
-  icon: string
-}
-
-export async function getWeather(lat: number, lon: number): Promise&lt;WeatherData&gt; {
-  try {
-    const response = await axios.get(
-      `${BASE_URL}/weather?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`
-    )
-    
-    return {
-      temp: Math.round(response.data.main.temp),
-      humidity: response.data.main.humidity,
-      windSpeed: response.data.wind.speed,
-      description: response.data.weather[0].description,
-      icon: response.data.weather[0].icon
+export async function getWeather(lat: number, lon: number): Promise<WeatherData> {
+  const response = await axios.get(\`\${BASE_URL}/weather\`, {
+    params: {
+      lat,
+      lon,
+      appid: API_KEY,
+      units: 'metric'
     }
-  } catch (error) {
-    throw new Error('Failed to fetch weather data')
+  })
+
+  const data = response.data
+  return {
+    temp: Math.round(data.main.temp),
+    humidity: data.main.humidity,
+    windSpeed: Math.round(data.wind.speed),
+    description: data.weather[0].description,
+    icon: data.weather[0].icon
   }
-}</pre>
-      </section>
-
-      <section>
-        <h2 class="text-2xl font-semibold mb-4">Building the Widget Component</h2>
-        <p class="mb-4">Create a reusable weather widget component:</p>
-        <pre class="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto">&lt;script setup lang="ts"&gt;
+}`
+  },
+  {
+    name: 'Weather Widget Component',
+    content: 'Create a reusable weather widget component:',
+    code: `<script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { format } from 'date-fns'
-import { getWeather, type WeatherData } from '../services/weatherService'
+import { getWeather } from '@/services/weather'
+import type { WeatherData } from '@/types/weather'
 
-const weather = ref&lt;WeatherData | null&gt;(null)
+const props = defineProps<{
+  latitude: number
+  longitude: number
+  location: string
+}>()
+
+const weather = ref<WeatherData | null>(null)
 const loading = ref(true)
-const error = ref('')
-const lastUpdated = ref(new Date())
+const error = ref<string | null>(null)
 
-const ROTTNEST_COORDS = {
-  lat: -32.0066,
-  lon: 115.5242
-}
-
-async function fetchWeather() {
+async function loadWeather() {
   try {
     loading.value = true
-    weather.value = await getWeather(
-      ROTTNEST_COORDS.lat, 
-      ROTTNEST_COORDS.lon
-    )
-    lastUpdated.value = new Date()
+    weather.value = await getWeather(props.latitude, props.longitude)
   } catch (e) {
-    error.value = 'Unable to load weather data'
+    error.value = 'Failed to load weather data'
   } finally {
     loading.value = false
   }
 }
 
-onMounted(fetchWeather)
-&lt;/script&gt;
+onMounted(() => {
+  loadWeather()
+})
+<\/script>
 
-&lt;template&gt;
-  &lt;div class="weather-widget bg-white rounded-lg shadow-md p-6"&gt;
-    &lt;div v-if="loading" class="flex justify-center items-center h-32"&gt;
-      &lt;div class="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"&gt;&lt;/div&gt;
-    &lt;/div&gt;
-
-    &lt;div v-else-if="error" class="text-red-500 text-center p-4"&gt;
+<template>
+  <div class="weather-widget p-4 bg-white rounded-lg shadow">
+    <h3 class="font-bold text-lg mb-2">{{ location }}</h3>
+    
+    <div v-if="loading" class="animate-pulse">
+      Loading weather...
+    </div>
+    
+    <div v-else-if="error" class="text-red-500">
       {{ error }}
-    &lt;/div&gt;
-
-    &lt;div v-else class="space-y-4"&gt;
-      &lt;div class="flex items-center justify-between"&gt;
-        &lt;h3 class="text-xl font-semibold"&gt;Rottnest Weather&lt;/h3&gt;
-        &lt;span class="text-sm text-gray-500"&gt;
-          Updated {{ format(lastUpdated, 'HH:mm') }}
-        &lt;/span&gt;
-      &lt;/div&gt;
-
-      &lt;div class="flex items-center gap-4"&gt;
-        &lt;img 
-          :src="'http://openweathermap.org/img/w/' + weather.icon + '.png'"
+    </div>
+    
+    <div v-else class="space-y-2">
+      <div class="flex items-center">
+        <img 
+          :src="\`https://openweathermap.org/img/w/\${weather.icon}.png\`" 
           :alt="weather.description"
-          class="w-16 h-16"
-        /&gt;
-        &lt;div&gt;
-          &lt;div class="text-3xl font-bold"&gt;{{ weather.temp }}°C&lt;/div&gt;
-          &lt;div class="text-gray-600 capitalize"&gt;{{ weather.description }}&lt;/div&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-
-      &lt;div class="grid grid-cols-2 gap-4 text-sm"&gt;
-        &lt;div&gt;
-          &lt;span class="text-gray-500"&gt;Humidity:&lt;/span&gt;
-          &lt;span class="ml-2"&gt;{{ weather.humidity }}%&lt;/span&gt;
-        &lt;/div&gt;
-        &lt;div&gt;
-          &lt;span class="text-gray-500"&gt;Wind:&lt;/span&gt;
-          &lt;span class="ml-2"&gt;{{ weather.windSpeed }} m/s&lt;/span&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-
-      &lt;button 
-        @click="fetchWeather"
-        class="w-full mt-4 px-4 py-2 bg-primary text-white rounded hover:bg-primary-dark transition-colors"&gt;
-        Refresh
-      &lt;/button&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/template&gt;</pre>
-      </section>
-
-      <section>
-        <h2 class="text-2xl font-semibold mb-4">Error Handling and Loading States</h2>
-        <p class="mb-4">Add comprehensive error handling:</p>
-        <pre class="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto">// src/composables/useWeather.ts
-import { ref, onMounted, onUnmounted } from 'vue'
-import { getWeather, type WeatherData } from '../services/weatherService'
-
-export function useWeather(lat: number, lon: number) {
-  const weather = ref&lt;WeatherData | null&gt;(null)
-  const loading = ref(true)
-  const error = ref('')
-  const lastUpdated = ref(new Date())
-  
-  let refreshInterval: number
-
-  async function fetchWeather() {
-    try {
-      loading.value = true
-      error.value = ''
-      weather.value = await getWeather(lat, lon)
-      lastUpdated.value = new Date()
-    } catch (e) {
-      error.value = 'Unable to load weather data'
-    } finally {
-      loading.value = false
-    }
+        >
+        <span class="text-2xl ml-2">{{ weather.temp }}°C</span>
+      </div>
+      
+      <div class="text-gray-600">
+        <p>Humidity: {{ weather.humidity }}%</p>
+        <p>Wind: {{ weather.windSpeed }} km/h</p>
+        <p class="capitalize">{{ weather.description }}</p>
+      </div>
+    </div>
+  </div>
+</template>`
+  },
+  {
+    name: 'Environment Variables',
+    content: 'Set up your API key in the environment variables:',
+    code: `# .env.local
+VITE_WEATHER_API_KEY=your_api_key_here`
   }
+];
 
-  onMounted(() => {
-    fetchWeather()
-    // Refresh every 30 minutes
-    refreshInterval = setInterval(fetchWeather, 30 * 60 * 1000)
-  })
+const nextTutorial = {
+  name: 'Interactive Maps',
+  path: '/tutorials/interactive-maps'
+} as const;
+</script>
 
-  onUnmounted(() => {
-    clearInterval(refreshInterval)
-  })
-
-  return {
-    weather,
-    loading,
-    error,
-    lastUpdated,
-    refresh: fetchWeather
-  }
-}</pre>
+<template>
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-3xl font-bold mb-6">Building a Weather Widget</h1>
+    
+    <div class="space-y-8">
+      <section v-for="tutorial in tutorials" :key="tutorial.name">
+        <h2 class="text-2xl font-semibold mb-4">{{ tutorial.name }}</h2>
+        <p class="mb-4">{{ tutorial.content }}</p>
+        
+        <div class="bg-gray-50 p-4 rounded-lg mb-4">
+          <pre class="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto"><code>{{ tutorial.code }}</code></pre>
+        </div>
       </section>
 
       <div class="next-steps bg-gray-50 p-4 rounded-lg mt-8">
         <h2 class="text-xl font-semibold mb-4">Next Steps</h2>
-        <p>Ready to add more interactivity to your site? Let's learn about:</p>
+        <p>Ready to learn more? Continue to the next tutorial:</p>
         <router-link 
-          to="/tutorials/interactive-maps"
-          class="inline-flex items-center text-primary hover:text-primary-dark transition-colors mt-4">
-          Continue to "Interactive Maps"
+          :to="nextTutorial.path"
+          class="inline-flex items-center text-primary hover:text-primary-dark transition-colors mt-4"
+        >
+          Continue to "{{ nextTutorial.name }}"
           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
           </svg>
@@ -195,3 +167,10 @@ export function useWeather(lat: number, lon: number) {
     </div>
   </div>
 </template>
+
+<style scoped>
+pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+</style>

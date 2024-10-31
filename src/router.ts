@@ -4,6 +4,7 @@ import Tutorials from './views/Tutorials.vue'
 import Blog from './views/Blog.vue'
 import Contact from './views/Contact.vue'
 import TutorialContent from './components/tutorials/TutorialContent.vue'
+import WeatherWidget from './components/tutorials/content/WeatherWidget.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -16,7 +17,11 @@ const router = createRouter({
       props: true 
     },
     { path: '/blog', component: Blog },
-    { path: '/contact', component: Contact }
+    { path: '/contact', component: Contact },
+    {
+      path: '/tutorials/weather-widget',
+      component: WeatherWidget
+    }
   ]
 })
 

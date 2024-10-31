@@ -1,9 +1,32 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed } from 'vue'
 
-const tutorials = ref([
-  // ... your tutorial content
-]);
+interface Tutorial {
+  name: string;
+  content: string;
+  code: string;
+}
+
+const tutorials = computed(() => [
+  {
+    name: 'Project Setup',
+    content: 'Create a new Eleventy project',
+    code: 'npm init -y\nnpm install @11ty/eleventy'
+  },
+  {
+    name: 'Basic Configuration',
+    content: 'Set up your Eleventy configuration file',
+    code: `// .eleventy.js
+module.exports = function(eleventyConfig) {
+  return {
+    dir: {
+      input: "src",
+      output: "_site"
+    }
+  };
+};`
+  }
+] as Tutorial[]);
 
 const nextTutorial = {
   name: 'Vue Basics',
@@ -30,7 +53,8 @@ const nextTutorial = {
         <p>Ready to learn more? Continue to the next tutorial:</p>
         <router-link 
           :to="nextTutorial.path"
-          class="inline-flex items-center text-primary hover:text-primary-dark transition-colors mt-4">
+          class="inline-flex items-center text-primary hover:text-primary-dark transition-colors mt-4"
+        >
           Continue to "{{ nextTutorial.name }}"
           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
