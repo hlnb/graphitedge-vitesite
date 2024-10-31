@@ -1,3 +1,12 @@
+<script setup lang="ts">
+import { ref } from 'vue';
+
+const nextTutorial = {
+  name: 'Images and Links',
+  path: '/tutorials/images-links'  // Make sure this matches exactly with the tutorialId in TutorialContent.vue
+} as const;
+</script>
+
 <template>
   <div class="max-w-4xl mx-auto">
     <h1 class="text-3xl font-bold mb-6">Getting Started with HTML</h1>
@@ -73,18 +82,25 @@
 
       <div class="next-steps bg-gray-50 p-4 rounded-lg mt-8">
         <h2 class="text-xl font-semibold mb-4">Next Steps</h2>
-        <p>In the next tutorial, we'll learn how to:</p>
-        <ul class="list-disc list-inside space-y-2">
-          <li>Add images of beautiful Rottnest Island</li>
-          <li>Create links between different pages</li>
-          <li>Organize your content better</li>
-        </ul>
+        <p>Ready to learn more? Continue to the next tutorial:</p>
         <router-link 
-          to="/tutorials/images-links"
-          class="inline-flex items-center text-primary hover:text-primary-dark transition-colors mt-4">
-          Continue to "Adding Images and Links"
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          :to="nextTutorial.path"
+          class="inline-flex items-center text-primary hover:text-primary-dark transition-colors mt-4"
+        >
+          Continue to "{{ nextTutorial.name }}"
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            class="h-4 w-4 ml-1" 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor"
+          >
+            <path 
+              stroke-linecap="round" 
+              stroke-linejoin="round" 
+              stroke-width="2" 
+              d="M9 5l7 7-7 7" 
+            />
           </svg>
         </router-link>
       </div>

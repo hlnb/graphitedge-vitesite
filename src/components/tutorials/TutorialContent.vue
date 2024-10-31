@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import HTML101 from './content/HTML101.vue'
 import ImagesLinks from './content/ImagesLinks.vue'
@@ -11,10 +11,7 @@ import EleventyBasics from './content/EleventyBasics.vue'
 import WeatherWidget from './content/WeatherWidget.vue'
 import InteractiveMaps from './content/InteractiveMaps.vue'
 
-const route = useRoute()
-const currentTutorial = ref(route.params.id || 'html101')
-
-const tutorials = {
+const tutorialComponents = {
   'html101': HTML101,
   'images-links': ImagesLinks,
   'css-basics': CSSBasics,
@@ -24,20 +21,24 @@ const tutorials = {
   'eleventy-basics': EleventyBasics,
   'weather-widget': WeatherWidget,
   'interactive-maps': InteractiveMaps
-}
+} as const;
+
+// If you're using route params to determine which tutorial to show:
+const props = defineProps<{
+  tutorialId: string
+}>();
+
+const currentTutorial = computed(() => 
+  tutorialComponents[props.tutorialId as keyof typeof tutorialComponents]
+);
 </script>
 
 <template>
-  <div v-if="tutorials[currentTutorial]">
-    <component :is="tutorials[currentTutorial]" />
-  </div>
-  <div v-else class="max-w-4xl mx-auto p-8">
-    <h1 class="text-3xl font-bold mb-4">Tutorial Not Found</h1>
-    <p>Sorry, the requested tutorial could not be found.</p>
-    <router-link 
-      to="/tutorials"
-      class="inline-flex items-center text-primary hover:text-primary-dark transition-colors mt-4">
-      Return to Tutorials List
-    </router-link>
+  <component 
+    v-if="currentTutorial" 
+    :is="currentTutorial" 
+  />
+  <div v-else class="error">
+    Tutorial not found
   </div>
 </template>
