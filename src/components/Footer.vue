@@ -7,8 +7,8 @@
           <p class="text-gray-400">Web Technology Tutorials & Insights</p>
         </div>
         <div class="text-center md:text-right">
-          <p>© {{ new Date().getFullYear() }} GraphitEdge. All rights reserved.</p>
-          <p class="text-gray-400">Created by Helen Burgess</p>
+          <p>© 2015 - {{ new Date().getFullYear() }} GraphitEdge. All rights reserved.</p>
+          <p class="text-gray-400">Created by Helen B</p>
         </div>
       </div>
     </div>
