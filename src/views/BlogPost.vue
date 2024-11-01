@@ -1,3 +1,53 @@
+<script setup lang="ts">
+import { ref, onMounted } from 'vue'
+import { formatDate } from '../utils/formatters'
+
+const props = defineProps<{
+  slug: string
+}>()
+
+const post = ref<any>(null)
+const loading = ref(true)
+// Add proper typing for your module
+interface BlogModule {
+  title: string;
+  content: string;
+  date?: string;
+}
+
+// Use the type
+const module = ref<BlogModule>({
+  title: '',
+  content: '',
+  date: ''
+})
+
+onMounted(async () => {
+  try {
+    // Import all blog posts
+    const modules = import.meta.glob('../blog/*.md', { eager: true })
+    
+    // Find the matching post
+    const postModule = Object.entries(modules).find(([path]) => 
+      path.includes(props.slug)
+    )
+
+    if (postModule) {
+      const [, module] = postModule
+      post.value = {
+        ...module.frontmatter,
+        content: module.html,
+        readingTime: Math.ceil(module.html.split(' ').length / 200) // Rough estimate
+      }
+    }
+  } catch (error) {
+    console.error('Error loading blog post:', error)
+  } finally {
+    loading.value = false
+  }
+})
+</script>
+
 <template>
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <div v-if="loading" class="text-center py-12">
@@ -60,42 +110,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import { formatDate } from '../utils/formatters'
 
-const props = defineProps<{
-  slug: string
-}>()
-
-const post = ref<any>(null)
-const loading = ref(true)
-
-onMounted(async () => {
-  try {
-    // Import all blog posts
-    const modules = import.meta.glob('../blog/*.md', { eager: true })
-    
-    // Find the matching post
-    const postModule = Object.entries(modules).find(([path]) => 
-      path.includes(props.slug)
-    )
-
-    if (postModule) {
-      const [, module] = postModule
-      post.value = {
-        ...module.frontmatter,
-        content: module.html,
-        readingTime: Math.ceil(module.html.split(' ').length / 200) // Rough estimate
-      }
-    }
-  } catch (error) {
-    console.error('Error loading blog post:', error)
-  } finally {
-    loading.value = false
-  }
-})
-</script>
 
 <style>
 /* Add any custom markdown styling here */

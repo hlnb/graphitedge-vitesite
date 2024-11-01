@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import helenImage from '../assets/images/helen-b.jpg'
+const helenImage = ref('../assets/images/helen-b.jpg')
 
 const imageLoaded = ref(false)
 
@@ -8,7 +8,7 @@ const handleImageLoad = () => {
   imageLoaded.value = true
 }
 
-const experience = [
+const experience = ref([
   {
     title: 'Web Development',
     years: '20+ years',
@@ -24,9 +24,9 @@ const experience = [
     years: '16 years',
     description: 'Distinguished veteran of the Royal Australian Air Force, specializing in communications and information systems. Applied military precision and systematic approach to technical training and problem-solving.'
   }
-]
+])
 
-const teachingPhilosophy = [
+const teachingPhilosophy = ref([
   {
     title: 'Learn by Doing',
     icon: 'laptop-code',
@@ -47,9 +47,9 @@ const teachingPhilosophy = [
     icon: 'chalkboard-teacher',
     description: 'Complex concepts explained in straightforward, accessible language'
   }
-]
+])
 
-const testimonials = [
+const testimonials = ref([
   {
     quote: "Helen's military background brings a unique structured approach to teaching web development. Her step-by-step methodology made learning complex concepts manageable and practical.",
     author: "Sarah M.",
@@ -65,7 +65,7 @@ const testimonials = [
     author: "Michael R.",
     role: "Career Transition Student"
   }
-]
+])
 </script>
 
 <template>

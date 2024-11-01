@@ -10,10 +10,11 @@ const navigation = [
   { name: 'Home', path: '/' },
   { name: 'Tutorials', path: '/tutorials' },
   { name: 'Blog', path: '/blog' },
-  { name: 'About', path: '/about' }
+  { name: 'About', path: '/about' },
+  { name: 'Contact', path: '/contact' }
 ] as const
 
-function toggleMenu() {
+const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
 }
 </script>
@@ -50,7 +51,7 @@ function toggleMenu() {
         <!-- Mobile menu button -->
         <div class="flex items-center md:hidden">
           <button
-            @click="isMenuOpen = !isMenuOpen"
+            @click="toggleMenu"
             class="inline-flex items-center justify-center p-2 rounded-md text-text-primary hover:text-text-dark hover:bg-brand-white/10 focus:outline-none"
           >
             <span class="sr-only">Open main menu</span>
@@ -94,7 +95,7 @@ function toggleMenu() {
           :class="route.path === item.path 
             ? 'text-text-dark bg-brand-white/10' 
             : 'text-text-primary hover:text-text-dark hover:bg-brand-white/10'"
-          @click="isMenuOpen = false"
+          @click="toggleMenu"
         >
           {{ item.name }}
         </router-link>

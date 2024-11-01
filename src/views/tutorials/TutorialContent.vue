@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { tutorials } from '@/data/tutorials'
+import tutorials from '@/data/tutorials'
 </script>
 
 <template>
