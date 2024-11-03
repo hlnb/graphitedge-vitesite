@@ -31,33 +31,13 @@
     <h2>Code Examples</h2>
 
     <h3>1. Simple Component</h3>
-    <pre><code class="language-vue text-white">
-&lt;template&gt;
-  &lt;div class="greeting"&gt;
-    &lt;h1&gt;{{ message }}&lt;/h1&gt;
-    &lt;button @click="updateMessage"&gt;Change Message&lt;/button&gt;
-  &lt;/div&gt;
-&lt;/template&gt;
-
-&lt;script setup&gt;
-import { ref } from 'vue'
-
-const data = ref({
-  message: '',
-  todo: null
-});
-
-const updateMessage = () => {
-  data.value.message = 'Hello Developer!'
-}
-&lt;/script&gt;
-
-&lt;style scoped&gt;
-.greeting {
-  text-align: center;
-  padding: 20px;
-}
-&lt;/style&gt;
+    <pre><code class="language-vue">
+{{ `<template>
+  <div class="greeting">
+    <h1>{{ message }}</h1>
+    <button @click="updateMessage">Change Message</button>
+  </div>
+</template>` }}
     </code></pre>
 
     <h3>2. Reactive Data Handling</h3>
@@ -78,22 +58,38 @@ const updateMessage = () => {
 &lt;/template&gt;
 
 &lt;script setup&gt;
-import { ref } from 'vue'
+import { ref, toRefs } from 'vue'
 
-const data = ref({
-  todo: '',
-  todos: []
-});
-
-const addTodo = () => {
-  if (data.value.todo.trim()) {
-    data.value.todos.push({
-      id: Date.now(),
-      text: data.value.todo
-    })
-    data.value.todo = ''
-  }
+// Add proper type definitions
+interface ComponentState {
+  todo: string;
+  todos: any[]; // Replace 'any' with proper type
 }
+
+// Use defineComponent with proper typing
+export default defineComponent({
+  setup() {
+    const state = ref<ComponentState>({
+      todo: '',
+      todos: []
+    })
+
+    const addTodo = () => {
+      if (state.value.todo.trim()) {
+        state.value.todos.push({
+          id: Date.now(),
+          text: state.value.todo
+        })
+        state.value.todo = ''
+      }
+    }
+
+    return {
+      ...toRefs(state),
+      addTodo
+    }
+  }
+})
 &lt;/script&gt;
     </code></pre>
 

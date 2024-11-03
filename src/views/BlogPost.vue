@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import { formatDate } from '../utils/formatters'
+import { ref, defineComponent, onMounted } from 'vue'
+import { formatDate, formatContent } from '../utils/formatters'
 
 const props = defineProps<{
   slug: string
@@ -12,7 +12,8 @@ const loading = ref(true)
 interface BlogModule {
   title: string;
   content: string;
-  date?: string;
+  date: string;
+  // Add other properties your module uses
 }
 
 // Use the type

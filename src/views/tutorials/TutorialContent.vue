@@ -1,5 +1,16 @@
 <script setup lang="ts">
-import tutorials from '@/data/tutorials'
+import type { Tutorial } from '@/data/tutorials'
+
+interface Category {
+  name: string;
+  items: Tutorial[];
+}
+
+import tutorialData from '@/data/tutorials'
+const tutorials: Category[] = [{
+  name: 'All Tutorials',
+  items: tutorialData
+}]
 </script>
 
 <template>
