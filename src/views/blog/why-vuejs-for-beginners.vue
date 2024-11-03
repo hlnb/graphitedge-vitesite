@@ -32,12 +32,12 @@
 
     <h3>1. Simple Component</h3>
     <pre><code class="language-vue">
-{{ `<template>
-  <div class="greeting">
-    <h1>{{ message }}</h1>
-    <button @click="updateMessage">Change Message</button>
-  </div>
-</template>` }}
+&lt;template&gt;
+  &lt;div class="greeting"&gt;
+    &lt;h1&gt;\{{ message }}&lt;/h1&gt;
+    &lt;button @click="updateMessage"&gt;Change Message&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
     </code></pre>
 
     <h3>2. Reactive Data Handling</h3>
@@ -45,51 +45,39 @@
 &lt;template&gt;
   &lt;div class="todo-app"&gt;
     &lt;input 
-      v-model="data.todo" 
+      v-model="todo"
       @keyup.enter="addTodo"
       placeholder="Add a todo"
     &gt;
     &lt;ul&gt;
-      &lt;li v-for="todo in data.todos" :key="todo.id"&gt;
-        {{ todo.text }}
+      &lt;li v-for="todo in todos" :key="todo.id"&gt;
+        \{{ todo.text }}
       &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/div&gt;
 &lt;/template&gt;
 
-&lt;script setup&gt;
-import { ref, toRefs } from 'vue'
+&lt;script setup lang="ts"&gt;
+import { ref } from 'vue'
 
-// Add proper type definitions
-interface ComponentState {
-  todo: string;
-  todos: any[]; // Replace 'any' with proper type
+const message = ref('Hello Vue!')
+const updateMessage = () => {
+  message.value = 'Message Updated!'
 }
 
-// Use defineComponent with proper typing
-export default defineComponent({
-  setup() {
-    const state = ref<ComponentState>({
-      todo: '',
-      todos: []
+// Add these for the todo functionality
+const todo = ref('')
+const todos = ref<Array<{ id: number; text: string }>>([])
+
+const addTodo = () => {
+  if (todo.value.trim()) {
+    todos.value.push({
+      id: Date.now(),
+      text: todo.value
     })
-
-    const addTodo = () => {
-      if (state.value.todo.trim()) {
-        state.value.todos.push({
-          id: Date.now(),
-          text: state.value.todo
-        })
-        state.value.todo = ''
-      }
-    }
-
-    return {
-      ...toRefs(state),
-      addTodo
-    }
+    todo.value = ''
   }
-})
+}
 &lt;/script&gt;
     </code></pre>
 
@@ -187,7 +175,26 @@ npm run dev
 </template>
 
 <script setup lang="ts">
-// No additional setup needed
+import { ref } from 'vue'
+
+const message = ref('Hello Vue!')
+const updateMessage = () => {
+  message.value = 'Message Updated!'
+}
+
+// Add these for the todo functionality
+const todo = ref('')
+const todos = ref<Array<{ id: number; text: string }>>([])
+
+const addTodo = () => {
+  if (todo.value.trim()) {
+    todos.value.push({
+      id: Date.now(),
+      text: todo.value
+    })
+    todo.value = ''
+  }
+}
 </script>
 
 <style scoped>
