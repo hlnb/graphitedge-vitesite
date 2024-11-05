@@ -1,125 +1,291 @@
-<template>
-  <div class="max-w-4xl mx-auto">
-    <h1 class="text-3xl font-bold mb-6">Contact Form Creation</h1>
+<script setup lang="ts">
+import { ref } from 'vue'
+import type { Tutorial } from '@/types/tutorial'
+
+interface FormData {
+  name: string
+  email: string
+  message: string
+}
+
+const formData = ref<FormData>({
+  name: '',
+  email: '',
+  message: ''
+})
+
+const tutorial = ref<Tutorial>({
+  title: 'Building a Contact Form',
+  description: 'Learn how to create and validate a contact form using Vue.js',
+  difficulty: 'intermediate',
+  category: 'Vue.js',
+  steps: [
+    {
+      title: 'Form Structure',
+      content: `
+        Let's create a basic contact form structure with proper HTML5 elements
+        and accessibility attributes.
+      `,
+      code: `
+<form @submit.prevent="handleSubmit">
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input 
+      type="text" 
+      id="name"
+      v-model="formData.name"
+      required
+    >
+  </div>
+  
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input 
+      type="email" 
+      id="email"
+      v-model="formData.email"
+      required
+    >
+  </div>
+  
+  <div class="form-group">
+    <label for="message">Message:</label>
+    <textarea 
+      id="message"
+      v-model="formData.message"
+      required
+    ></textarea>
+  </div>
+  
+  <button type="submit">Send Message</button>
+</form>`
+    },
+    {
+      title: 'Form Validation',
+      content: `
+        Add client-side validation to ensure data quality before submission.
+      `,
+      code: `
+const errors = ref({})
+
+function validateForm() {
+  errors.value = {}
+  
+  if (!formData.value.name.trim()) {
+    errors.value.name = 'Name is required'
+  }
+  
+  if (!formData.value.email.trim()) {
+    errors.value.email = 'Email is required'
+  } else if (!isValidEmail(formData.value.email)) {
+    errors.value.email = 'Invalid email format'
+  }
+  
+  if (!formData.value.message.trim()) {
+    errors.value.message = 'Message is required'
+  }
+  
+  return Object.keys(errors.value).length === 0
+}
+
+function isValidEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+}`
+    },
+    {
+      title: 'Form Submission',
+      content: `
+        Handle form submission and show appropriate feedback to users.
+      `,
+      code: `
+const isSubmitting = ref(false)
+const submitSuccess = ref(false)
+
+async function handleSubmit() {
+  if (!validateForm()) {
+    return
+  }
+  
+  isSubmitting.value = true
+  
+  try {
+    const response = await fetch('/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData.value)
+    })
     
-    <div class="space-y-8">
-      <section>
-        <h2 class="text-2xl font-semibold mb-4">Creating the Form</h2>
-        <p class="mb-4">Let's create a contact form for visitors to get in touch:</p>
-        
-        <div class="bg-gray-50 p-4 rounded-lg mb-4">
-          <h3 class="font-semibold mb-2">HTML Structure</h3>
-          <pre class="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto">
-&lt;form class="contact-form"&gt;
-    &lt;div class="form-group"&gt;
-        &lt;label for="name"&gt;Name:&lt;/label&gt;
-        &lt;input type="text" id="name" name="name" required&gt;
-    &lt;/div&gt;
+    if (response.ok) {
+      submitSuccess.value = true
+      resetForm()
+    } else {
+      throw new Error('Submission failed')
+    }
+  } catch (error) {
+    console.error('Error:', error)
+  } finally {
+    isSubmitting.value = false
+  }
+}`
+    }
+  ]
+})
 
-    &lt;div class="form-group"&gt;
-        &lt;label for="email"&gt;Email:&lt;/label&gt;
-        &lt;input type="email" id="email" name="email" required&gt;
-    &lt;/div&gt;
+// Tutorial navigation state
+const activeStep = ref(0)
 
-    &lt;div class="form-group"&gt;
-        &lt;label for="message"&gt;Message:&lt;/label&gt;
-        &lt;textarea id="message" name="message" rows="4" required&gt;&lt;/textarea&gt;
-    &lt;/div&gt;
+const nextStep = () => {
+  if (activeStep.value < tutorial.value.steps.length - 1) {
+    activeStep.value++
+  }
+}
 
-    &lt;button type="submit"&gt;Send Message&lt;/button&gt;
-&lt;/form&gt;</pre>
-        </div>
-      </section>
+const previousStep = () => {
+  if (activeStep.value > 0) {
+    activeStep.value--
+  }
+}
 
-      <section>
-        <h2 class="text-2xl font-semibold mb-4">Styling the Form</h2>
-        <p class="mb-4">Make your form look professional:</p>
-        <pre class="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto">
+// Form handling
+const handleSubmit = () => {
+  // Implementation details would go here
+  console.log('Form submitted:', formData.value)
+}
+
+const resetForm = () => {
+  formData.value = {
+    name: '',
+    email: '',
+    message: ''
+  }
+}
+</script>
+
+<template>
+  <article class="tutorial-content">
+    <!-- Same header and navigation structure as previous tutorials -->
+    <header class="tutorial-header">
+      <h1>{{ tutorial.title }}</h1>
+      <p class="description">{{ tutorial.description }}</p>
+      <div class="metadata">
+        <span class="difficulty">{{ tutorial.difficulty }}</span>
+        <span class="category">{{ tutorial.category }}</span>
+      </div>
+    </header>
+
+    <nav class="tutorial-navigation">
+      <button 
+        @click="previousStep" 
+        :disabled="activeStep === 0"
+        class="nav-button"
+      >
+        Previous
+      </button>
+      <span class="step-indicator">
+        Step {{ activeStep + 1 }} of {{ tutorial.steps.length }}
+      </span>
+      <button 
+        @click="nextStep" 
+        :disabled="activeStep === tutorial.steps.length - 1"
+        class="nav-button"
+      >
+        Next
+      </button>
+    </nav>
+
+    <section class="tutorial-step">
+      <h2>{{ tutorial.steps[activeStep].title }}</h2>
+      <div 
+        class="content"
+        v-html="tutorial.steps[activeStep].content"
+      ></div>
+      <pre 
+        v-if="tutorial.steps[activeStep].code"
+        class="code-block"
+      ><code>{{ tutorial.steps[activeStep].code }}</code></pre>
+      
+      <!-- Interactive Demo -->
+      <div v-if="activeStep === 0" class="demo-section">
+        <h3>Live Demo</h3>
+        <form @submit.prevent="handleSubmit" class="contact-form">
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input 
+              type="text" 
+              id="name"
+              v-model="formData.name"
+              required
+            >
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input 
+              type="email" 
+              id="email"
+              v-model="formData.email"
+              required
+            >
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Message:</label>
+            <textarea 
+              id="message"
+              v-model="formData.message"
+              required
+            ></textarea>
+          </div>
+          
+          <button type="submit" class="submit-button">
+            Send Message
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <footer class="tutorial-footer">
+      <div class="progress-bar">
+        <div 
+          class="progress"
+          :style="`width: ${(activeStep + 1) / tutorial.steps.length * 100}%`"
+        ></div>
+      </div>
+    </footer>
+  </article>
+</template>
+
+<style scoped>
+/* Previous tutorial styles plus form-specific styles */
 .contact-form {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 20px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  @apply max-w-lg mx-auto mt-8;
 }
 
 .form-group {
-    margin-bottom: 20px;
+  @apply mb-4;
 }
 
-label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+.form-group label {
+  @apply block mb-2 font-medium;
 }
 
-input, textarea {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+.form-group input,
+.form-group textarea {
+  @apply w-full p-2 border rounded-lg;
 }
 
-button {
-    background: #0066cc;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+.form-group textarea {
+  @apply h-32;
 }
 
-button:hover {
-    background: #0052a3;
-}</pre>
-      </section>
-
-      <section>
-        <h2 class="text-2xl font-semibold mb-4">Form Validation</h2>
-        <p class="mb-4">Add basic form validation:</p>
-        <pre class="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto">
-input:invalid, textarea:invalid {
-    border-color: #ff4444;
+.submit-button {
+  @apply w-full bg-primary text-white py-2 px-4 rounded-lg
+    hover:bg-primary-dark transition-colors;
 }
 
-.error-message {
-    color: #ff4444;
-    font-size: 14px;
-    margin-top: 5px;
+.demo-section {
+  @apply mt-8 border-t pt-8;
 }
-
-/* Add this JavaScript to your page */
-&lt;script&gt;
-const form = document.querySelector('.contact-form');
-form.addEventListener('submit', function(event) {
-    event.preventDefault();
-    // Here you would typically send the form data to a server
-    alert('Thank you for your message!');
-    form.reset();
-});
-&lt;/script&gt;</pre>
-      </section>
-
-      <div class="next-steps bg-gray-50 p-4 rounded-lg mt-8">
-        <h2 class="text-xl font-semibold mb-4">Congratulations!</h2>
-        <p>You've completed the fundamentals of web development! You now know how to:</p>
-        <ul class="list-disc list-inside space-y-2">
-          <li>Create web pages with HTML</li>
-          <li>Style them beautifully with CSS</li>
-          <li>Add images and create galleries</li>
-          <li>Build user-friendly forms</li>
-        </ul>
-        <p class="mt-4">Keep practicing and experimenting with your Rotto Rocks website!</p>
-        <router-link 
-          to="/tutorials"
-          class="inline-flex items-center text-primary hover:text-primary-dark transition-colors mt-4">
-          Return to Tutorials
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-          </svg>
-        </router-link>
-      </div>
-    </div>
-  </div>
-</template>
+</style>

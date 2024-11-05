@@ -32,6 +32,11 @@ export default {
         text: {
           primary: 'rgb(115, 130, 144)',    // Main text color
           dark: 'rgb(68, 68, 68)'           // Dark text color
+        },
+        primary: {
+          DEFAULT: '#3B82F6', // This is a blue color, you can change it to your preferred primary color
+          dark: '#2563EB',    // Darker shade for hover states
+          light: '#60A5FA',   // Lighter shade if needed
         }
       },
       typography: {
@@ -52,5 +57,7 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 }

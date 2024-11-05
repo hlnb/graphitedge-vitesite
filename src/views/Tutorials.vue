@@ -23,6 +23,15 @@ const selectedCategory = ref('all')
 
 const tutorials = ref<Tutorial[]>([
   {
+    path: '/tutorials/SetupTools',
+    title: 'Setting Up Your Development Environment',
+    description: 'Learn how to set up your development environment for web development.',
+    level: 'Beginner',
+    tags: ['Development', 'Tools'],
+    order: 0,
+    category: 'fundamentals'
+  },
+  {
     path: '/tutorials/HTML101',
     title: 'HTML 101: Getting Started',
     description: 'Learn the fundamentals of HTML and start building your first web pages.',
@@ -32,12 +41,30 @@ const tutorials = ref<Tutorial[]>([
     category: 'fundamentals'
   },
   {
+    path: '/tutorials/ImagesLinks',
+    title: 'Images and Links',
+    description: 'Learn how to add images and links to your web pages.',
+    level: 'Beginner',
+    tags: ['HTML', 'Web Development'],
+    order: 2,
+    category: 'fundamentals'
+  },
+  {
+    path: '/tutorials/Forms',
+    title: 'HTML Forms',
+    description: 'Learn how to create interactive forms and handle user input effectively.',
+    level: 'Beginner',
+    tags: ['HTML', 'Web Development'],
+    order: 3,
+    category: 'fundamentals'
+  },
+  {
     path: '/tutorials/CSSBasics',
     title: 'CSS Basics',
     description: 'Master the basics of CSS and start styling your web pages beautifully.',
     level: 'Beginner',
     tags: ['CSS', 'Web Development'],
-    order: 2,
+    order: 4,
     category: 'fundamentals'
   },
   {
@@ -46,7 +73,7 @@ const tutorials = ref<Tutorial[]>([
     description: 'Learn the fundamentals of JavaScript programming with hands-on examples and exercises.',
     level: 'Beginner',
     tags: ['JavaScript'],
-    order: 3,
+    order: 5,
     category: 'fundamentals'
   },
   {
@@ -55,7 +82,7 @@ const tutorials = ref<Tutorial[]>([
     description: 'Get started with Vue.js and learn the fundamentals of this progressive framework.',
     level: 'Intermediate',
     tags: ['Vue.js', 'JavaScript'],
-    order: 4,
+    order: 6,
     category: 'fundamentals'
   },
   {
@@ -64,7 +91,7 @@ const tutorials = ref<Tutorial[]>([
     description: 'Create an interactive photo gallery using Vue.js and modern CSS techniques.',
     level: 'Intermediate',
     tags: ['Vue.js', 'CSS'],
-    order: 5,
+    order: 7,
     category: 'interactive'
   },
   {
@@ -73,7 +100,7 @@ const tutorials = ref<Tutorial[]>([
     description: 'Learn how to create and validate a contact form using Vue.js.',
     level: 'Intermediate',
     tags: ['Vue.js', 'Forms'],
-    order: 6,
+    order: 8,
     category: 'interactive'
   },
   {
@@ -82,7 +109,7 @@ const tutorials = ref<Tutorial[]>([
     description: 'Build interactive maps using modern web technologies.',
     level: 'Advanced',
     tags: ['JavaScript', 'Maps'],
-    order: 7,
+    order: 9,
     category: 'interactive'
   },
   {
@@ -91,7 +118,7 @@ const tutorials = ref<Tutorial[]>([
     description: 'Create a dynamic weather widget using APIs and Vue.js.',
     level: 'Intermediate',
     tags: ['Vue.js', 'API'],
-    order: 8,
+    order: 10,
     category: 'interactive'
   },
   {
@@ -100,7 +127,7 @@ const tutorials = ref<Tutorial[]>([
     description: 'Learn advanced function concepts including higher-order functions, closures, recursion, and async functions.',
     level: 'Advanced',
     tags: ['JavaScript', 'Functions'],
-    order: 9,
+    order: 11,
     category: 'advanced'
   },
   {
@@ -109,7 +136,7 @@ const tutorials = ref<Tutorial[]>([
     description: 'Learn the basics of the Eleventy static site generator.',
     level: 'Intermediate',
     tags: ['Eleventy', 'Static Sites'],
-    order: 10,
+    order: 12,
     category: 'advanced'
   }
 ])

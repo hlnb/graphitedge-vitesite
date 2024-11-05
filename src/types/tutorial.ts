@@ -1,9 +1,15 @@
 // Create a new type file
 export interface Tutorial {
-    name: string;
-    items: {
-        title: string;
-        content: string;
-    }[];
-    // Add other properties your Tutorial type needs
+    title: string;
+    description: string;
+    difficulty: 'beginner' | 'intermediate' | 'advanced';
+    category: string;
+    steps: TutorialStep[];
+}
+
+export interface TutorialStep {
+    title: string;
+    content: string;
+    code?: string;
+    image?: string;
 } 
