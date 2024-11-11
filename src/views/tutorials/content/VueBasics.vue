@@ -102,63 +102,37 @@ const increment = () => count.value++
       title: 'Reactivity Fundamentals',
       content: `
         <div class="step-content">
-          <p class="mb-6">Vue's reactivity system automatically updates the UI when data changes. Key concepts include:</p>
+          <p class="mb-6">Vue's reactivity system automatically updates the UI when data changes.</p>
           
           <ul class="mb-6">
-            <li><strong>ref()</strong> - For reactive primitive values</li>
-            <li><strong>reactive()</strong> - For reactive objects</li>
-            <li><strong>computed()</strong> - For derived values</li>
-            <li><strong>watch()</strong> - For side effects</li>
+            <li>ref() - For reactive primitive values</li>
+            <li>reactive() - For reactive objects</li>
+            <li>computed() - For derived values</li>
+            <li>watch() - For side effects</li>
           </ul>
-
-          <p class="mb-6">Here's an example demonstrating these reactive concepts:</p>
 
           <div class="read-more-links">
             <h4>Read More:</h4>
             <ul>
-              <li>
-                <a href="https://vuejs.org/guide/essentials/reactivity-fundamentals.html" target="_blank" rel="noopener noreferrer">Reactivity Fundamentals</a>
-              </li>
-              <li>
-                <a href="https://vuejs.org/guide/essentials/computed.html" target="_blank" rel="noopener noreferrer">Computed Properties</a>
-              </li>
+              <li><a href="https://vuejs.org/guide/essentials/reactivity-fundamentals.html">Reactivity Fundamentals</a></li>
+              <li><a href="https://vuejs.org/guide/essentials/computed.html">Computed Properties</a></li>
             </ul>
           </div>
         </div>
       `,
-      code: `<script setup lang="ts">
-import { ref, reactive, computed, watch } from 'vue'
+      code: `import { ref, reactive, computed, watch } from 'vue'
 
-// Reactive primitive
 const count = ref(0)
-
-// Reactive object
 const user = reactive({
   name: 'John',
   age: 25
 })
 
-// Computed property
 const doubleCount = computed(() => count.value * 2)
 
-// Watch for changes
 watch(count, (newValue, oldValue) => {
   console.log(\`Count changed from \${oldValue} to \${newValue}\`)
-})
-<\/script>
-
-<template>
-  <div>
-    <p>Count: {{ count }} (Double: {{ doubleCount }})</p>
-    <button @click="count++">Increment</button>
-    
-    <div>
-      <h3>User Info:</h3>
-      <p>Name: {{ user.name }}</p>
-      <p>Age: {{ user.age }}</p>
-    </div>
-  </div>
-</template>`
+})`
     }
   ],
   resources: [

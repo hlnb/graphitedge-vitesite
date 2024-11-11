@@ -559,11 +559,50 @@ const copyCode = async (code: string) => {
       <span class="separator-text">Next Steps</span>
     </div>
 
-    <!-- Next Steps Section -->
-    <section class="next-steps">
-      <h2>Continue Your Learning Journey</h2>
-      <p class="next-steps-description">Ready to dive deeper into JavaScript? Explore these advanced topics:</p>
-      
+    <!-- Navigation Section -->
+    <section class="tutorial-navigation-section">
+      <div class="navigation-grid">
+        <!-- Previous Tutorial -->
+        <router-link 
+          to="/tutorials/CSSBasics" 
+          class="tutorial-card previous-tutorial"
+        >
+          <div class="card-content">
+            <span class="direction-label">← Previous Tutorial</span>
+            <h3>CSS Basics</h3>
+            <p>Learn the basics of styling your web page with CSS</p>
+          </div>
+        </router-link>
+
+        <!-- All Tutorials -->
+        <router-link 
+          to="/tutorials" 
+          class="tutorial-card all-tutorials"
+        >
+          <div class="card-content">
+            <span class="direction-label">Tutorial Index</span>
+            <h3>All Tutorials</h3>
+            <p>Browse our complete collection of web development tutorials.</p>
+          </div>
+        </router-link>
+
+        <!-- Next Tutorial -->
+        <router-link 
+          to="/tutorials/VueBasics" 
+          class="tutorial-card next-tutorial"
+        >
+          <div class="card-content">
+            <span class="direction-label">Next Tutorial →</span>
+            <h3>Vue Basics</h3>
+            <p>Learn about the fundamentals of the VueJS Framework</p>
+          </div>
+        </router-link>
+      </div>
+    </section>
+
+    <!-- Advanced Topics Section -->
+    <section class="advanced-topics">
+      <h2>Advanced JavaScript Topics</h2>
       <div class="advanced-topics-grid">
         <a 
           href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules" 
@@ -744,5 +783,64 @@ const copyCode = async (code: string) => {
 
 .next-tutorial-card:hover {
   background: linear-gradient(to right, white, #f0f7ff);
+}
+
+.advanced-topics {
+  @apply my-12;
+}
+
+.advanced-topics h2 {
+  @apply text-2xl font-bold mb-6;
+}
+
+.advanced-topics-grid {
+  @apply grid gap-6 md:grid-cols-2;
+}
+
+.next-tutorial-card {
+  @apply block bg-white rounded-lg shadow-md hover:shadow-lg
+    transition-all duration-200 border border-gray-100
+    hover:border-blue-200 hover:transform hover:scale-[1.02];
+}
+
+.next-tutorial-card .card-content {
+  @apply p-6;
+}
+
+.next-tutorial-card h3 {
+  @apply text-xl font-semibold text-gray-800 mb-2;
+}
+
+.next-tutorial-card p {
+  @apply text-gray-600 mb-4;
+}
+
+.next-link {
+  @apply text-blue-600 font-medium inline-flex items-center gap-1
+    hover:text-blue-700;
+}
+
+.next-tutorial-card:hover {
+  background: linear-gradient(to right, white, #f0f7ff);
+}
+.tutorial-navigation-section {
+  @apply my-16 bg-gray-50 p-4 rounded-lg;
+}
+
+.navigation-grid {
+  @apply grid gap-4 md:grid-cols-3 mt-4;
+}
+
+.tutorial-card {
+  @apply p-4 bg-white rounded-lg shadow-sm hover:shadow-md
+    transition-shadow duration-200;
+}
+
+.card-content {
+  @apply text-gray-700 leading-relaxed;
+}
+
+.direction-label {
+  @apply text-sm font-semibold text-gray-600 mb-2;
 }
 </style> 

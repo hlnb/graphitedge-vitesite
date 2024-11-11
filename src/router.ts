@@ -119,6 +119,17 @@ const router = createRouter({
       component: () => import('./views/blog/web-development-best-practices.vue')
     },
     {
+      path: '/tutorials/tailwind-styling',
+      name: 'TailwindStyling',
+      component: () => import('./views/tutorials/content/tailwind-styling.vue'),
+      meta: {
+        title: 'Styling with Tailwind CSS',
+        level: 'intermediate',
+        description: 'Learn how to create a consistent design system using Tailwind CSS',
+        order: 1 // First tutorial in intermediate section
+      }
+    },
+    {
       path: '/:pathMatch(.*)*',
       name: 'NotFound',
       component: () => import('./views/NotFound.vue')

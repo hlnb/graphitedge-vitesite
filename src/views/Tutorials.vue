@@ -86,6 +86,15 @@ const tutorials = ref<Tutorial[]>([
     category: 'fundamentals'
   },
   {
+    path: '/tutorials/tailwind-styling',
+    title: 'Styling with Tailwind CSS',
+    description: 'Learn how to create a consistent design system using Tailwind CSS',
+    level: 'Intermediate',
+    tags: ['Tailwind CSS'],
+    order: 7,
+    category: 'fundamentals'
+  },
+  {
     path: '/tutorials/photo-gallery',
     title: 'Building a Photo Gallery',
     description: 'Create an interactive photo gallery using Vue.js and modern CSS techniques.',
