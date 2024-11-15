@@ -74,6 +74,11 @@ const router = createRouter({
       component: () => import('./views/tutorials/content/ImagesLinks.vue')
     },
     {
+      path: '/tutorials/gallery-component',
+      name: 'GalleryComponent',
+      component: () => import('./views/tutorials/content/gallery-component.vue')
+    },
+    {
       path: '/tutorials/Forms',
       name: 'Forms',
       component: () => import('./views/tutorials/content/Forms.vue')

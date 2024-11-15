@@ -163,7 +163,7 @@
       <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <!-- Previous Tutorial -->
         <RouterLink 
-          to="/tutorials/fundamentals/image-links"
+          to="/tutorials/ImagesLinks"
           class="flex items-center text-blue-600 hover:text-blue-800 group"
         >
           <svg 
@@ -198,7 +198,7 @@
 
         <!-- Next Tutorial -->
         <RouterLink 
-          to="/tutorials/vue/gallery-component"
+          to="/tutorials/gallery-component"
           class="flex items-center text-blue-600 hover:text-blue-800 group"
         >
           <span>
@@ -214,25 +214,6 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
           </svg>
         </RouterLink>
-      </div>
-
-      <!-- Tutorial Series Context -->
-      <div class="mt-8 bg-gray-50 rounded-lg p-4">
-        <h2 class="text-lg font-semibold mb-2">Tutorial Series: Fundamentals</h2>
-        <p class="text-gray-600 mb-4">
-          This tutorial is part of the Fundamentals series, focusing on core web development concepts.
-          After completing this tutorial, you'll be ready to move on to Vue.js components in the next series.
-        </p>
-        <div class="flex items-center gap-2">
-          <span class="text-sm text-gray-500">Series Progress:</span>
-          <div class="flex-1 h-2 bg-gray-200 rounded-full max-w-xs">
-            <div 
-              class="h-full bg-blue-500 rounded-full"
-              style="width: 75%"
-            ></div>
-          </div>
-          <span class="text-sm text-gray-500">3 of 4</span>
-        </div>
       </div>
     </div>
   </div>
