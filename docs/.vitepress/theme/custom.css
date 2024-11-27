@@ -1,0 +1,90 @@
+:root {
+  /* Primary Colors */
+  --primary-white: rgb(255, 255, 255);
+  --primary-light-gray: rgb(216, 216, 216);
+  --primary-dark-gray: rgb(77, 77, 77);
+  --primary-red: rgb(141, 0, 0);
+  --primary-dark-red: rgb(106, 8, 8);
+  --primary-bright-red: rgb(162, 17, 17);
+
+  /* Accent Colors */
+  --accent-pink: rgb(255, 249, 251);
+  --accent-mint: rgb(201, 228, 202);
+  --accent-sage: rgb(135, 187, 162);
+  --accent-blue: rgb(75, 136, 162);
+  --accent-gray: rgb(211, 212, 217);
+
+  /* Theme Color Assignments */
+  --vp-c-brand: var(--primary-dark-red);
+  --vp-c-brand-light: var(--primary-red);
+  --vp-c-brand-lighter: var(--primary-bright-red);
+  --vp-c-brand-dark: var(--accent-blue);
+  --vp-c-brand-darker: var(--accent-sage);
+  
+  /* Background Colors */
+  --vp-c-bg: var(--primary-white);
+  --vp-c-bg-soft: var(--accent-pink);
+  --vp-c-bg-mute: var(--accent-gray);
+}
+
+/* Dark mode adjustments */
+.dark {
+  --vp-c-brand: var(--primary-dark-red);
+  --vp-c-brand-light: var(--primary-red);
+  --vp-c-brand-lighter: var(--primary-bright-red);
+  --vp-c-brand-dark: var(--accent-blue);
+  --vp-c-brand-darker: var(--accent-sage);
+  
+  --vp-c-bg: var(--primary-dark-gray);
+  --vp-c-bg-soft: rgb(35, 35, 35);
+  --vp-c-bg-mute: rgb(45, 45, 45);
+}
+
+/* Custom styles for blog posts */
+.blog-post {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  border-radius: 8px;
+  background-color: var(--vp-c-bg-soft);
+  border: 1px solid var(--accent-gray);
+}
+
+/* Custom styles for tutorial content */
+.tutorial-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: var(--vp-c-bg);
+}
+
+/* Custom button styles */
+.custom-button {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  background-color: var(--primary-dark-red);
+  color: var(--primary-white);
+  text-decoration: none;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.custom-button:hover {
+  background-color: var(--primary-red);
+  transform: translateY(-1px);
+}
+
+/* Additional custom elements */
+.highlight-box {
+  background-color: var(--accent-mint);
+  border-left: 4px solid var(--primary-dark-red);
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 0 4px 4px 0;
+}
+
+.tag {
+  background-color: var(--primary-dark-red);
+  color: var(--primary-white);
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.9em;
+}
