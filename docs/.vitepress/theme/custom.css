@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 :root {
   /* Primary Colors */
   --primary-white: rgb(255, 255, 255);
@@ -88,3 +89,25 @@
   border-radius: 12px;
   font-size: 0.9em;
 }
+=======
+/* Add any custom styles needed for your blog posts */
+.vp-doc h1 {
+  margin-top: 2rem;
+}
+
+.vp-doc h2 {
+  margin-top: 3rem;
+}
+
+.vp-doc h3 {
+  margin-top: 2rem;
+}
+
+.vp-doc pre {
+  margin: 1rem 0;
+}
+
+.vp-doc code {
+  font-size: 0.9em;
+} 
+>>>>>>> aa05e052b843fab0653fd557e9edf4bb113c5118
