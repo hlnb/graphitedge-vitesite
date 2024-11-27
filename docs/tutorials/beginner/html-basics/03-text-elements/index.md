@@ -4,8 +4,12 @@ description: Learn how to structure and format text content in HTML
 difficulty: beginner
 tags: ['html', 'web fundamentals']
 duration: '45 minutes'
-prev: '../02-first-page/'
-next: '../04-links-images/'
+prev:
+  text: 'Your First HTML Page'
+  link: '../02-first-page/'
+next:
+  text: 'Links and Images'
+  link: '../04-links-images/'
 ---
 
 # Text Elements

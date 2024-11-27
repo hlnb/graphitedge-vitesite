@@ -4,8 +4,12 @@ description: Learn how to add hyperlinks and images to your web pages
 difficulty: beginner
 tags: ['html', 'web fundamentals']
 duration: '45 minutes'
-prev: '../03-text-elements/'
-next: '../05-document-structure/'
+prev:
+  text: 'Text Elements'
+  link: '../03-text-elements/'
+next:
+  text: 'Document Structure'
+  link: '../05-document-structure/'
 ---
 
 # Links and Images

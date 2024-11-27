@@ -1,17 +1,42 @@
 ---
 title: Introduction to HTML
-description: Learn what HTML is and how it forms the foundation of web pages
+description: Learn the basics of HTML and start building web pages
 difficulty: beginner
-tags: ['html', 'web fundamentals']
+tags: ['html', 'basics']
 duration: '30 minutes'
-next: '../02-first-page/'
+prev:
+  text: 'Browser Developer Tools'
+  link: '/tutorials/getting-started/04-browser-tools/'
+next:
+  text: 'Your First HTML Page'
+  link: '/tutorials/beginner/html-basics/02-first-page/'
 ---
+
+<div class="tutorial-container">
 
 # Introduction to HTML
 
+Welcome to HTML Basics! In this tutorial series, you'll learn how to create web pages using HTML.
+
+::: tip Prerequisites
+If you've completed the Getting Started section, you'll already have:
+
+- VS Code installed with extensions
+- A basic understanding of web technologies
+- Browser developer tools ready
+
+If you haven't completed Getting Started, you might want to [start there first](/tutorials/getting-started/).
+:::
+
 ## What is HTML?
 
-HTML (HyperText Markup Language) is the code that helps us structure content on the web. Think of it as the skeleton of a web page - it defines the structure and meaning of content rather than its appearance.
+HTML (HyperText Markup Language) is the standard language for creating web pages. It provides the structure and content of a webpage, like:
+
+- Headings
+- Paragraphs
+- Links
+- Images
+- Forms
 
 ## How Websites Work
 
@@ -84,3 +109,5 @@ Before moving on, try:
 2. Writing multiple paragraphs
 3. Opening your files in different browsers to see how they look
    :::
+
+</div>

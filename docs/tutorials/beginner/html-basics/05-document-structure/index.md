@@ -4,7 +4,9 @@ description: Learn how to organize your HTML content with semantic elements
 difficulty: beginner
 tags: ['html', 'web fundamentals']
 duration: '45 minutes'
-prev: '../04-links-images/'
+prev:
+  text: 'Links and Images'
+  link: '../04-links-images/'
 ---
 
 # Document Structure

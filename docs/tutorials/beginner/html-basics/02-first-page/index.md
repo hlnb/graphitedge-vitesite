@@ -4,8 +4,12 @@ description: Learn the essential structure of an HTML document and create your f
 difficulty: beginner
 tags: ['html', 'web fundamentals']
 duration: '45 minutes'
-prev: '../01-introduction/'
-next: '../03-text-elements/'
+prev:
+  text: 'Introduction to HTML'
+  link: '../01-introduction/'
+next:
+  text: 'Text Elements'
+  link: '../03-text-elements/'
 ---
 
 # Your First HTML Page

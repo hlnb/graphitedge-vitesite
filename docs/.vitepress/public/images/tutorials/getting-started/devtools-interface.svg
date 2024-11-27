@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 800 800" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(1.08576,0,0,1.38985,-44.7938,-104.513)">
+        <rect x="42.515" y="71.985" width="738.424" height="49.957" style="fill:rgb(77,77,77);"/>
+        <g transform="matrix(0.420412,0,0,7.40138,23.3062,-411.282)">
+            <rect x="42.515" y="71.985" width="738.424" height="49.957" style="fill:rgb(216,216,216);"/>
+        </g>
+        <g transform="matrix(0.579731,0,0,7.40138,327.607,-411.345)">
+            <rect x="42.515" y="71.985" width="738.424" height="49.957" style="fill:white;"/>
+        </g>
+        <g transform="matrix(1,0,0,1,-73.7127,-30.0297)">
+            <text x="455.757px" y="330.002px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:24px;">.selected-element {</text>
+            <text x="522.437px" y="354.788px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:24px;">color: var(--primary-dark-red);</text>
+            <text x="522.437px" y="379.573px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:24px;">padding: 1rem;</text>
+            <g transform="matrix(24,0,0,24,643.808,404.358)">
+            </g>
+            <text x="502.433px" y="404.358px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:24px;">}</text>
+        </g>
+        <g transform="matrix(1,0,0,1,430.298,13.3853)">
+            <g transform="matrix(24,0,0,24,193.938,247.904)">
+            </g>
+            <text x="65.864px" y="247.904px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:24px;">Styles Pane</text>
+        </g>
+        <rect x="42.515" y="71.985" width="738.424" height="49.957" style="fill:rgb(77,77,77);"/>
+        <g transform="matrix(24,0,0,24,176.548,247.904)">
+        </g>
+        <text x="65.864px" y="247.904px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:24px;">DOM <tspan x="128.091px 141.86px 149.853px " y="247.904px 247.904px 247.904px ">Tre</tspan>e</text>
+        <rect x="46.373" y="74.11" width="83.389" height="36.935" style="fill:rgb(106,8,8);"/>
+        <g transform="matrix(1,0,0,1,-17.6437,4.24684)">
+            <g transform="matrix(12,0,0,12,458.212,95.5207)">
+            </g>
+            <text x="75.507px" y="95.521px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:12px;fill:white;">elements <tspan x="147.507px 150.624px 183.507px " y="95.521px 95.521px 95.521px ">| C</tspan>onsole <tspan x="255.507px 258.624px 291.507px " y="95.521px 95.521px 95.521px ">| N</tspan>etwork <tspan x="363.507px 366.624px 399.507px " y="95.521px 95.521px 95.521px ">| A</tspan>pplication</text>
+        </g>
+        <g transform="matrix(1,0,0,3.35224,-0.43549,242.332)">
+            <rect x="42.515" y="71.985" width="738.424" height="49.957" style="fill:rgb(211,212,217);"/>
+        </g>
+        <g transform="matrix(1,0,0,1,-23.995,-38.3614)">
+            <text x="162.687px" y="583.284px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:24px;">Console Output                      |</text>
+            <g transform="matrix(24,0,0,24,550.929,608.069)">
+            </g>
+            <text x="162.687px" y="608.069px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:24px;">|  &gt; console.log(&apos;T<tspan x="348.933px 362.28px " y="608.069px 608.069px ">es</tspan>ting DevT<tspan x="474.323px 487.671px " y="608.069px 608.069px ">oo</tspan>ls&apos;);</text>
+        </g>
+    </g>
+</svg>
