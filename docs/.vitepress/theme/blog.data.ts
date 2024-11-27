@@ -12,17 +12,23 @@ interface Post {
 export default {
   watch: ['blog/*.md'],
   async load(): Promise<Post[]> {
-    const data = await createContentLoader('blog/*.md', {
+    const posts = await createContentLoader('blog/*.md', {
       excerpt: true,
+      transform(raw): Post[] {
+        return raw
+          .filter(post => post.url !== '/blog/') // Filter out index page
+          .map(post => ({
+            title: post.frontmatter.title,
+            url: post.url,
+            excerpt: post.excerpt || post.frontmatter.description || '',
+            date: post.frontmatter.date,
+            tags: post.frontmatter.tags || [],
+            description: post.frontmatter.description
+          }))
+          .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+      }
     }).load()
 
-    return data.map(post => ({
-      title: post.frontmatter.title || 'Untitled',
-      url: post.url,
-      excerpt: post.excerpt || post.frontmatter.description || '',
-      date: post.frontmatter.date,
-      tags: post.frontmatter.tags || [],
-      description: post.frontmatter.description
-    }))
+    return posts
   }
 }

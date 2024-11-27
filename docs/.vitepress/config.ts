@@ -161,6 +161,21 @@ export default defineConfig({
     // Search configuration
     search: {
       provider: 'local'
+    },
+
+    blog: {
+      title: 'Blog',
+      description: 'Latest articles and tutorials',
+      defaultAuthor: 'GraphitEdge Team',
+      categoryIcons: {
+        article: '📝',
+        tutorial: '📚',
+        guide: '📌'
+      },
+      list: {
+        // Number of posts to show per page
+        pageSize: 10
+      }
     }
   },
 
@@ -177,6 +192,11 @@ export default defineConfig({
       'bash',
       'markdown',
       'json'
-    ]
+    ],
+    frontmatter: true,
+    theme: {
+      light: 'github-light',
+      dark: 'github-dark'
+    }
   },
 }) 
