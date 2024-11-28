@@ -1,5 +1,4 @@
 import { defineConfig } from 'vitepress'
-import { mermaidPlugin } from 'vitepress-plugin-mermaid'
 
 export default defineConfig({
   title: 'GraphitEdge',
@@ -23,28 +22,115 @@ export default defineConfig({
 
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Tutorials', link: '/tutorials/' },
       { 
-        text: 'Tutorial Sections',
+        text: 'Tutorials',
+        link: '/tutorials/',
         items: [
           {
             text: 'Getting Started',
             items: [
               { text: 'Overview', link: '/tutorials/getting-started/' },
-              { text: 'Development Environment', link: '/tutorials/getting-started/01-development-setup/' },
+              { text: 'Development Setup', link: '/tutorials/getting-started/01-development-setup/' },
               { text: 'Web Basics', link: '/tutorials/getting-started/02-web-basics/' },
-              { text: 'Text Editors', link: '/tutorials/getting-started/03-text-editors/' }
-          ]
+              { text: 'Text Editors', link: '/tutorials/getting-started/03-text-editors/' },
+              { text: 'Browser Tools', link: '/tutorials/getting-started/04-browser-tools/' }
+            ]
           },
           {
-            text: 'HTML Basics',
-            link: '/tutorials/beginner/html-basics/01-introduction/'
+            text: 'Beginner Tutorials',
+            items: [
+              { text: 'HTML Basics', link: '/tutorials/beginner/html-basics/01-introduction/' },
+              { text: 'CSS Fundamentals', link: '/tutorials/beginner/css-basics/' },
+              { text: 'JavaScript Basics', link: '/tutorials/beginner/javascript-basics/' }
+            ]
           }
         ]
-      }
+      },
+      { text: 'Blog', link: '/blog/' },
+      { text: 'About', link: '/about/' },
+      { text: 'Contact', link: '/contact/' },
+      { text: 'Resources', link: '/resources/' }
     ],
 
     sidebar: {
+      '/tutorials/': [
+        {
+          text: 'Tutorial Overview',
+          items: [
+            { text: 'All Tutorials', link: '/tutorials/' }
+          ]
+        },
+        {
+          text: 'Getting Started',
+          items: [
+            { text: 'Overview', link: '/tutorials/getting-started/' },
+            { text: 'Development Setup', link: '/tutorials/getting-started/01-development-setup/' },
+            { text: 'Web Basics', link: '/tutorials/getting-started/02-web-basics/' },
+            { text: 'Text Editors', link: '/tutorials/getting-started/03-text-editors/' },
+            { text: 'Browser Tools', link: '/tutorials/getting-started/04-browser-tools/' }
+          ]
+        },
+        {
+          text: 'HTML Basics',
+          collapsed: true,
+          items: [
+            { text: 'Introduction', link: '/tutorials/beginner/html-basics/01-introduction/' },
+            { text: 'Your First HTML Page', link: '/tutorials/beginner/html-basics/02-first-page/' },
+            { text: 'Text Elements', link: '/tutorials/beginner/html-basics/03-text-elements/' },
+            { text: 'Links and Images', link: '/tutorials/beginner/html-basics/04-links-images/' },
+            { text: 'Document Structure', link: '/tutorials/beginner/html-basics/05-document-structure/' },
+            { text: 'HTML Forms', link: '/tutorials/beginner/html-basics/06-forms/' }
+          ]
+        },
+        {
+          text: 'CSS Fundamentals',
+          collapsed: true,
+          items: [
+            { text: 'Overview', link: '/tutorials/beginner/css-basics/' },
+            { text: 'Introduction to CSS', link: '/tutorials/beginner/css-basics/01-introduction/' },
+            { text: 'Selectors & Properties', link: '/tutorials/beginner/css-basics/02-selectors/' },
+            { text: 'Colors & Typography', link: '/tutorials/beginner/css-basics/03-colors-typography/' },
+            { text: 'The CSS Box Model', link: '/tutorials/beginner/css-basics/04-box-model/' },
+            { text: 'Flexbox Basics', link: '/tutorials/beginner/css-basics/05-flexbox-basics/' },1
+            // ... other CSS tutorials
+          ]
+        },
+        {
+          text: 'JavaScript Basics',
+          collapsed: true,
+          items: [
+            { text: 'Overview', link: '/tutorials/beginner/javascript-basics/' },
+            { text: 'Introduction', link: '/tutorials/beginner/javascript-basics/01-introduction/' },
+            { text: 'Variables & Data Types', link: '/tutorials/beginner/javascript-basics/02-variables-data-types/' },
+            { text: 'Control Flow', link: '/tutorials/beginner/javascript-basics/03-control-flow/' },
+            { text: 'Functions', link: '/tutorials/beginner/javascript-basics/04-functions/' },
+            { text: 'DOM Basics', link: '/tutorials/beginner/javascript-basics/05-dom-basics/' },
+            { text: 'Events', link: '/tutorials/beginner/javascript-basics/06-events/' }
+          ]
+        },
+        {
+          text: 'Intermediate CSS',
+          collapsed: true,
+          items: [
+            { text: 'Overview', link: '/tutorials/intermediate/css-advanced/' },
+            { text: 'CSS Grid', link: '/tutorials/intermediate/css-advanced/01-grid/' },
+            { text: 'Advanced Flexbox', link: '/tutorials/intermediate/css-advanced/02-advanced-flexbox/' },
+            { text: 'Responsive Design', link: '/tutorials/intermediate/css-advanced/03-responsive-design/' },
+            { text: 'CSS Variables', link: '/tutorials/intermediate/css-advanced/04-css-variables/' },
+            { text: 'Transitions & Animations', link: '/tutorials/intermediate/css-advanced/05-animations/' }
+          ]
+        },
+        {
+          text: 'Resources',
+          collapsed: true,
+          items: [
+            { 
+              text: 'Project Assets',
+              link: '/resources/'
+            }
+          ]
+        }
+      ],
       '/tutorials/getting-started/': [
         {
           text: 'Getting Started',
@@ -66,6 +152,59 @@ export default defineConfig({
             { text: 'Text Elements', link: '/tutorials/beginner/html-basics/03-text-elements/' },
             { text: 'Links and Images', link: '/tutorials/beginner/html-basics/04-links-images/' },
             { text: 'Document Structure', link: '/tutorials/beginner/html-basics/05-document-structure/' }
+          ]
+        }
+      ],
+      '/tutorials/beginner/css-basics/': [
+        {
+          text: 'CSS Fundamentals',
+          items: [
+            { text: 'Overview', link: '/tutorials/beginner/css-basics/' },
+            { text: 'Introduction to CSS', link: '/tutorials/beginner/css-basics/01-introduction/' },
+            // Future tutorials to be added:
+            { text: 'Selectors & Properties', link: '/tutorials/beginner/css-basics/02-selectors/' },
+            { text: 'Colors & Typography', link: '/tutorials/beginner/css-basics/03-colors-typography/' },
+            { text: 'Box Model & Layout', link: '/tutorials/beginner/css-basics/04-box-model/' },
+            { text: 'Flexbox Basics', link: '/tutorials/beginner/css-basics/05-flexbox-basics/' }
+          ]
+        }
+      ],
+      '/tutorials/beginner/javascript-basics/': [
+        {
+          text: 'JavaScript Basics',
+          items: [
+            { text: 'Overview', link: '/tutorials/beginner/javascript-basics/' },
+            { text: 'Introduction', link: '/tutorials/beginner/javascript-basics/01-introduction/' },
+            { text: 'Variables & Data Types', link: '/tutorials/beginner/javascript-basics/02-variables-data-types/' },
+            { text: 'Control Flow', link: '/tutorials/beginner/javascript-basics/03-control-flow/' },
+            { text: 'Functions', link: '/tutorials/beginner/javascript-basics/04-functions/' },
+            { text: 'DOM Basics', link: '/tutorials/beginner/javascript-basics/05-dom-basics/' },
+            { text: 'Events', link: '/tutorials/beginner/javascript-basics/06-events/' }
+          ]
+        }
+      ],
+      '/tutorials/intermediate/css-advanced/': [
+        {
+          text: 'Intermediate CSS',
+          items: [
+            { text: 'Overview', link: '/tutorials/intermediate/css-advanced/' },
+            { text: 'CSS Grid', link: '/tutorials/intermediate/css-advanced/01-grid/' },
+            { text: 'Advanced Flexbox', link: '/tutorials/intermediate/css-advanced/02-advanced-flexbox/' },
+            { text: 'Responsive Design', link: '/tutorials/intermediate/css-advanced/03-responsive-design/' },
+            { text: 'CSS Variables', link: '/tutorials/intermediate/css-advanced/04-css-variables/' },
+            { text: 'Transitions & Animations', link: '/tutorials/intermediate/css-advanced/05-animations/' }
+          ]
+        }
+      ],
+      '/resources/': [
+        {
+          text: 'Resources',
+          items: [
+            { text: 'Overview', link: '/resources/' },
+            { text: 'Logos & Branding', link: '/resources/#logos-and-branding' },
+            { text: 'Style Guides', link: '/resources/#style-guides' },
+            { text: 'Project Assets', link: '/resources/#project-assets' },
+            { text: 'Code Templates', link: '/resources/#code-templates' }
           ]
         }
       ]
@@ -93,7 +232,8 @@ export default defineConfig({
       defaultAuthor: 'GraphitEdge Team'
     },
 
-    copyCode: true
+    copyCode: true,
+    codeGroup: true
   },
 
   markdown: {
@@ -102,6 +242,9 @@ export default defineConfig({
       light: 'github-light',
       dark: 'github-dark'
     },
-    toc: { level: [1, 2, 3] }
+    toc: { level: [1, 2, 3] },
+    container: {
+      customTypes: true
+    }
   }
 })

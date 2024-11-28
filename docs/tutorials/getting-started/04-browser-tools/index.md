@@ -18,14 +18,14 @@ next:
 
 Chrome DevTools is a powerful set of web development tools built directly into the browser. These tools help you inspect, debug, and optimize your websites.
 
-::: highlight-box
+<div class="highlight-box">
 In this tutorial, you'll learn:
 
 - How to open and use DevTools
 - Inspect and modify HTML/CSS
 - Debug JavaScript
 - Analyze page performance
-  :::
+</div>
 
 ## Opening DevTools
 
@@ -61,13 +61,13 @@ The Elements panel shows your page's HTML and CSS.
 - Add new styles
 - See computed values
 
-::: highlight-box
+<div class="highlight-box">
 **Practice**: Try these steps:
 
 1. Inspect this page
 2. Find this box's HTML
 3. Look at its CSS styles
-   :::
+</div>
 
 ## Console Panel
 
@@ -176,14 +176,14 @@ Analyze and optimize website performance.
 
 ## Best Practices
 
-::: highlight-box
+  <div class="highlight-box">
 **Developer Tips**
 
 1. Keep DevTools open while coding
 2. Use Console for quick tests
 3. Save useful code snippets
 4. Learn keyboard shortcuts
-   :::
+</div>
 
 ## Keyboard Shortcuts
 

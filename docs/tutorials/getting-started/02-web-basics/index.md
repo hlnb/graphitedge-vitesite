@@ -18,14 +18,14 @@ next:
 
 Before diving into coding, let's understand how websites work and the technologies that power them.
 
-::: highlight-box
+<div class="highlight-box">
 In this lesson, you'll learn:
 
 - How websites work
 - The client-server model
 - Core web technologies
 - How browsers interpret code
-  :::
+</div>
 
 ## How Websites Work
 
@@ -104,13 +104,13 @@ button.addEventListener('click', () => {
 - Manages data
 - Runs on remote computer
 
-::: highlight-box
+<div class="highlight-box">
 **Local Development**: When developing, your computer acts as both client and server:
 
 - VS Code edits the files
 - Live Server acts as your web server
 - Chrome displays the results
-  :::
+</div>
 
 ## How Browsers Work
 
@@ -157,14 +157,14 @@ Browsers process web pages in several steps:
    - Reload page
    - Watch resources load
 
-::: highlight-box
+<div class="highlight-box">
 Practice Exercise:
 
 1. Create a simple HTML file
 2. View it in Chrome
 3. Use DevTools to inspect it
 4. Watch the Network tab as it loads
-   :::
+</div>
 
 ## Common Terms
 

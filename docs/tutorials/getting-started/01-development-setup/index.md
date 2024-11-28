@@ -16,6 +16,7 @@ next:
 <h1>Setting Up Your Development Environment</h1>
 
 A proper development environment helps you write, test, and debug code efficiently. Let's set up the essential tools you'll need.
+[Previous content remains...]
 
 ## Web Browser
 
@@ -86,6 +87,18 @@ Good file organization is crucial for web development.
        ├── images/        # Images folder
        └── js/           # JavaScript folder
    ```
+
+## Project Resources
+
+Throughout these tutorials, you'll need certain assets. You can find all project resources in our [Resources section](/resources/).
+
+::: tip Project Assets
+Remember to:
+
+1. Download assets from the Resources page
+2. Create appropriate folders in your project
+3. Follow the usage instructions provided
+   :::
 
 ## Try It Yourself
 

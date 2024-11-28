@@ -95,3 +95,365 @@
   border-radius: 12px;
   font-size: 0.9em;
 }
+
+/* Box Model Demo */
+.box-model-demo {
+  margin: 2rem 0;
+  font-family: monospace;
+  text-align: center;
+}
+
+.box-model-demo .margin {
+  background-color: var(--accent-gray);
+  padding: 40px;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+.box-model-demo .border {
+  background-color: var(--primary-dark-gray);
+  padding: 4px;
+  color: var(--primary-white);
+  transition: background-color 0.3s ease;
+}
+
+.box-model-demo .padding {
+  background-color: var(--accent-sage);
+  padding: 40px;
+  transition: background-color 0.3s ease;
+}
+
+.box-model-demo .content {
+  background-color: var(--primary-dark-red);
+  padding: 20px;
+  color: var(--primary-white);
+  transition: background-color 0.3s ease;
+}
+
+/* Hover Effects */
+.box-model-demo .margin:hover {
+  background-color: var(--accent-gray);
+  cursor: pointer;
+}
+
+.box-model-demo .border:hover {
+  background-color: var(--primary-bright-red);
+  cursor: pointer;
+}
+
+.box-model-demo .padding:hover {
+  background-color: var(--accent-mint);
+  cursor: pointer;
+}
+
+.box-model-demo .content:hover {
+  background-color: var(--primary-red);
+  cursor: pointer;
+}
+
+/* Labels */
+.box-model-demo > div {
+  position: relative;
+}
+
+.box-model-demo > div::before {
+  content: attr(class);
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  font-size: 0.8rem;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.box-model-demo > div:hover::before {
+  opacity: 1;
+}
+
+/* Measurements */
+.box-model-demo > div {
+  position: relative;
+}
+
+.box-model-demo .margin::after {
+  content: "margin: 40px";
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  font-size: 0.8rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.box-model-demo .border::after {
+  content: "border: 4px";
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  font-size: 0.8rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.box-model-demo .padding::after {
+  content: "padding: 40px";
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  font-size: 0.8rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.box-model-demo .content::after {
+  content: "content: 20px padding";
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  font-size: 0.8rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Show measurements on hover */
+.box-model-demo .margin:hover::after,
+.box-model-demo .border:hover::after,
+.box-model-demo .padding:hover::after,
+.box-model-demo .content:hover::after {
+  opacity: 1;
+}
+
+/* Code Demos */
+.code-demo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.code-block {
+  padding: 1rem;
+  background: #f6f6f6;
+}
+
+.demo-block {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: white;
+}
+
+/* Make sure code blocks inside demo don't expand full width */
+.code-demo .language-css {
+  margin: 0;
+}
+
+/* Responsive layout */
+@media (max-width: 640px) {
+  .code-demo {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Color Palette Display */
+.color-palette {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.color-swatch {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.swatch {
+  height: 100px;
+  width: 100%;
+}
+
+.color-details {
+  padding: 1rem;
+  background: white;
+}
+
+.color-name {
+  font-weight: bold;
+  margin: 0;
+}
+
+.color-hex {
+  font-family: monospace;
+  margin: 0.5rem 0 0 0;
+  color: #666;
+}
+
+/* Font Demo Styles */
+.font-demo {
+  display: grid;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.font-family {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.font-example {
+  margin: 1rem 0;
+  padding: 1rem;
+  background: #f5f5f5;
+  border-radius: 4px;
+}
+
+.font-example .large {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.font-example p {
+  margin: 0.5rem 0;
+}
+
+/* Font Weights Demo */
+.font-weights {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #f5f5f5;
+  border-radius: 4px;
+}
+
+.font-weights p {
+  margin: 0.5rem 0;
+}
+
+/* Tutorial Grid - Container for all cards */
+.tutorial-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+/* Individual Technology Card */
+.tutorial-grid .tech-card {
+    flex: 1;
+    min-width: 300px;
+    background: var(--vp-c-bg-soft);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Card Title */
+.tutorial-grid h3 {
+    margin: 0 0 1rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--vp-c-brand);
+    color: var(--vp-c-brand);
+}
+
+/* Tutorial List */
+.tutorial-grid ol {
+    list-style-type: decimal;
+    padding-left: 1.5rem;
+    margin: 0;
+}
+
+.tutorial-grid li {
+    margin: 0.75rem 0;
+}
+
+/* Tutorial Links */
+.tutorial-grid a {
+    color: var(--vp-c-text-1);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.tutorial-grid a:hover {
+    color: var(--vp-c-brand);
+}
+
+/* Duration Tag */
+.duration {
+    font-size: 0.85em;
+    color: var(--vp-c-text-2);
+    margin-left: 0.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .tutorial-grid {
+        flex-direction: column;
+    }
+    
+    .tutorial-grid .tech-card {
+        width: 100%;
+    }
+}
+
+/* Other boxes */
+.highlight-box,
+.tip-box {
+    background: var(--vp-c-bg-soft);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    border-left: 4px solid var(--vp-c-brand);
+}
+
+/* Coming Soon Section */
+.coming-soon {
+    opacity: 0.7;
+}
+
+.coming-soon h3 {
+    border-bottom-style: dashed;
+}
+
+/* Tutorial Container */
+.tutorial-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+/* Highlight and Tip Boxes */
+.highlight-box,
+.tip-box {
+    background: var(--vp-c-bg-soft);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    border-left: 4px solid var(--vp-c-brand);
+}
+
+.highlight-box h3,
+.tip-box h3 {
+    margin-top: 0;
+    color: var(--vp-c-brand);
+}
+
+.highlight-box ol,
+.tip-box ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+}
+
+/* Numbered Lists */
+.tutorial-grid ol {
+    list-style-type: decimal;
+}
+
+.tutorial-grid ol li {
+    padding-left: 0.5rem;
+}

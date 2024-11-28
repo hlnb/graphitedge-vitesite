@@ -18,14 +18,14 @@ next:
 
 Visual Studio Code (VS Code) is a powerful editor that makes web development easier and more efficient.
 
-::: highlight-box
+<div class="highlight-box">
 In this tutorial, you'll learn:
 
 - Essential VS Code features
 - Helpful extensions
 - Keyboard shortcuts
 - Code organization tips
-  :::
+</div>
 
 ## VS Code Interface
 
@@ -83,7 +83,7 @@ In this tutorial, you'll learn:
 
 ## Keyboard Shortcuts
 
-::: highlight-box
+<div class="highlight-box">
 **Essential Shortcuts**
 
 - Save: Ctrl/Cmd + S
@@ -91,7 +91,7 @@ In this tutorial, you'll learn:
 - Replace: Ctrl/Cmd + H
 - Toggle Terminal: Ctrl + `
 - Format Document: Alt + Shift + F
-  :::
+</div>
 
 ## File Organization
 
@@ -149,7 +149,7 @@ VS Code includes helpful snippets for quick coding:
 
 ## Practice Exercises
 
-::: highlight-box
+<div class="highlight-box">
 Try these tasks:
 
 1. Create a new project folder
@@ -157,7 +157,7 @@ Try these tasks:
 3. Use multiple cursors
 4. Create a custom snippet
 5. Install and test extensions
-   :::
+</div>
 
 ## Troubleshooting
 
@@ -233,14 +233,14 @@ VS Code includes Emmet, a powerful tool that speeds up HTML and CSS writing.
    </ul>
    ```
 
-::: highlight-box
+<div class="highlight-box">
 **Common Emmet Patterns**
 
 - `p{text}` → `<p>text</p>`
 - `div>p` → `<div><p></p></div>`
 - `h1+p` → `<h1></h1><p></p>`
 - `.item` → `<div class="item"></div>`
-  :::
+</div>
 
 ### CSS Shortcuts
 

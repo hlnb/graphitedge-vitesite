@@ -1,57 +1,115 @@
 ---
-title: Setting Up Your Development Environment
-description: Set up your computer for web development
+title: Getting Started with Web Development
+description: Essential setup and concepts for beginning web development
 difficulty: beginner
-tags: ['setup', 'tools']
-duration: '45 minutes'
+tags: ['setup', 'basics', 'tools']
+duration: '3-4 hours'
 prev:
-  text: 'Getting Started'
-  link: '/tutorials/getting-started/'
+  text: 'Tutorials Overview'
+  link: '/tutorials/'
 next:
-  text: 'Web Development Basics'
-  link: '/tutorials/getting-started/02-web-basics/'
+  text: 'Development Setup'
+  link: '/tutorials/getting-started/01-development-setup/'
 ---
-
-# Setting Up Your Development Environment
 
 <div class="tutorial-container">
 
-A proper development environment helps you write, test, and debug code efficiently. Let's set up the essential tools you'll need.
+# Getting Started with Web Development
+
+Welcome to web development! Before diving into coding, let's set up your development environment and understand some key concepts.
 
 <div class="highlight-box">
-Before starting, ensure you have:
+In this section, you'll learn:
 
-- Administrator access to your computer
-- A stable internet connection
-- Space for new software installations
+- How to set up your development environment
+- Basic concepts of how the web works
+- Essential development tools
+- Browser developer tools
 </div>
 
-## Web Browser
+## Section Overview
 
-A modern web browser is your primary tool for viewing and testing websites.
+### 1. [Development Setup](./01-dev-environment/)
 
-### Recommended Browser: Google Chrome
+Get your computer ready for web development:
 
-1. Download from [chrome.google.com](https://www.google.com/chrome/)
-2. Install following your system's standard process
-3. Make Chrome your default browser (recommended)
+- Installing required software
+- Setting up your workspace
+- Organizing project files
+- Understanding file types
 
-::: tip Alternative Browsers
-While we use Chrome in these tutorials, you can also use:
+### 2. [Web Development Basics](./02-web-basics/)
 
-- Firefox
-- Safari (Mac)
-- Microsoft Edge
+Learn fundamental concepts:
+
+- How websites work
+- Client-server model
+- Web technologies overview
+- Browser processes
+
+### 3. [Working with Text Editors](./03-text-editors/)
+
+Master VS Code for web development:
+
+- Essential features
+- Helpful extensions
+- Keyboard shortcuts
+- Code organization
+
+### 4. [Browser Developer Tools](./04-browser-tools/)
+
+Use browser tools for development:
+
+- Inspecting elements
+- Debugging code
+- Testing responsive design
+- Performance analysis
+
+## Time Commitment
+
+Each tutorial takes about 45 minutes to complete:
+
+- Reading time: 15-20 minutes
+- Practice exercises: 20-25 minutes
+- Additional exploration: As needed
+
+## Prerequisites
+
+You'll need:
+
+- A computer (Windows, Mac, or Linux)
+- Internet connection
+- Basic computer skills
+- Enthusiasm to learn!
+
+::: tip Before Starting
+Make sure you:
+
+- Have administrator access to your computer
+- Can install new software
+- Have a modern web browser (Chrome recommended)
   :::
+
+## Learning Approach
+
+Each tutorial includes:
+
+1. Clear explanations
+2. Visual examples
+3. Practice exercises
+4. Real-world context
 
 ## What's Next?
 
+Start with [Development Setup](./01-dev-environment/) to prepare your computer for web development.
+
 <div class="highlight-box">
-Make sure you have:
-- Chrome installed and working
-- VS Code installed with extensions
-- Project folders organized
-- Live Server successfully running
+By the end of this section, you'll have:
+
+- A complete development environment
+- Understanding of web basics
+- Essential development tools
+- Knowledge of browser tools
 </div>
 
 </div>
