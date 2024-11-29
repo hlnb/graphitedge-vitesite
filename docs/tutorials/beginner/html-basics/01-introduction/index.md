@@ -98,6 +98,31 @@ Let's write your first piece of HTML:
 3. Save the file as `hello.html`
 4. Open it in your web browser
 
+<div class="tip-box">
+<h3>About CodePen Examples</h3>
+<p>Throughout these tutorials, our CodePen examples focus on content that goes inside the <code>&lt;body&gt;</code> tag. CodePen automatically provides the basic HTML structure (<code>&lt;!DOCTYPE html&gt;</code>, <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, and <code>&lt;body&gt;</code> tags).</p>
+</div>
+
+## Your First HTML Elements
+
+Let's start with a simple example:
+
+<div class="codepen-wrapper">
+<iframe height="300" 
+        style="width: 100%;" 
+        scrolling="no" 
+        title="HTML-Basics-01-first-elements" 
+        src="https://codepen.io/hlnbee/embed/JoPoJBg?default-tab=html%2Cresult" 
+        frameborder="no" 
+        loading="lazy" 
+        allowtransparency="true" 
+        allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/hlnbee/pen/JoPoJBg">
+  HTML-Basics-01-first-elements</a> by Helen Burgess (<a href="https://codepen.io/hlnbee">@hlnbee</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+</div>
+
 ## What's Next?
 
 In the next lesson, we'll create your first complete HTML page and learn about the essential elements every HTML document needs.
@@ -109,5 +134,45 @@ Before moving on, try:
 2. Writing multiple paragraphs
 3. Opening your files in different browsers to see how they look
    :::
+
+Try changing the text inside the paragraph tags. Click "Edit on CodePen" to make your own changes!
+
+## Interactive Exercise: Create a Simple Profile
+
+Using what you've learned, create a simple profile with:
+
+- A heading with your name
+- A paragraph about yourself
+- Another heading for "My Hobbies"
+- A paragraph listing your hobbies
+
+<div class="codepen-wrapper">
+<iframe height="300" 
+        style="width: 100%;" 
+        scrolling="no" 
+        title="HTML-Basics-01-first-elements" 
+        src="https://codepen.io/hlnbee/embed/PwYwjym?default-tab=html%2Cresult" 
+        frameborder="no" 
+        loading="lazy" 
+        allowtransparency="true" 
+        allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/hlnbee/pen/PwYwjym">
+  HTML-Basics-01-first-elements</a> by Helen Burgess (<a href="https://codepen.io/hlnbee">@hlnbee</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+</div>
+
+<details>
+<summary>Click to see a solution</summary>
+
+```html
+<h1>John Smith</h1>
+<p>Hi! I'm John, a web development student.</p>
+
+<h2>My Hobbies</h2>
+<p>I enjoy reading, hiking, and learning to code!</p>
+```
+
+</details>
 
 </div>

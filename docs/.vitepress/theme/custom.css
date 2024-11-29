@@ -81,11 +81,11 @@
 
 /* Additional custom elements */
 .highlight-box {
-  background-color: var(--accent-mint);
-  border-left: 4px solid var(--primary-dark-red);
-  padding: 1rem;
-  margin: 1rem 0;
-  border-radius: 0 4px 4px 0;
+  background: #f0f5f1;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  border-left: 4px solid #dc3545;
 }
 
 .tag {
@@ -404,33 +404,7 @@
 /* Other boxes */
 .highlight-box,
 .tip-box {
-    background: var(--vp-c-bg-soft);
-    border-radius: 8px;
-    padding: 1.5rem;
-    margin: 2rem 0;
-    border-left: 4px solid var(--vp-c-brand);
-}
-
-/* Coming Soon Section */
-.coming-soon {
-    opacity: 0.7;
-}
-
-.coming-soon h3 {
-    border-bottom-style: dashed;
-}
-
-/* Tutorial Container */
-.tutorial-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1rem;
-}
-
-/* Highlight and Tip Boxes */
-.highlight-box,
-.tip-box {
-    background: var(--vp-c-bg-soft);
+    background: var(--accent-mint);
     border-radius: 8px;
     padding: 1.5rem;
     margin: 2rem 0;
@@ -440,7 +414,7 @@
 .highlight-box h3,
 .tip-box h3 {
     margin-top: 0;
-    color: var(--vp-c-brand);
+    color: #68a678;
 }
 
 .highlight-box ol,
@@ -456,4 +430,39 @@
 
 .tutorial-grid ol li {
     padding-left: 0.5rem;
+}
+
+/* Warning Box - Different color scheme */
+.warning-box {
+    background: var(--vp-c-bg-soft);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    border-left: 4px solid #e6a23c;
+}
+
+.warning-box h3 {
+    margin-top: 0;
+    color: #e6a23c;
+}
+
+/* CodePen Embed Styling */
+.codepen-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    margin: 2rem 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.codepen-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
 }

@@ -185,7 +185,8 @@ This combined link is more efficient than using separate links.
   - Navigation links
   - Buttons
   - Font weights: 400 (regular), 600 (semi-bold)
-    :::
+
+:::
 
 ### Font Sizes
 

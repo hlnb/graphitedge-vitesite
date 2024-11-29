@@ -18,14 +18,16 @@ next:
 
 CSS (Cascading Style Sheets) is what makes the web beautiful. It transforms plain HTML into visually appealing websites.
 
-::: highlight-box
+<div class="highlight-box">
+
 In this tutorial, you'll learn:
 
 - What CSS is and how it works
 - Different ways to add CSS to HTML
 - Basic CSS syntax
 - How styles cascade
-  :::
+
+</div>
 
 ## What is CSS?
 

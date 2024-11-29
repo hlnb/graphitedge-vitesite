@@ -16,13 +16,14 @@ prerequisites:
 
 CSS (Cascading Style Sheets) is the language that brings visual style and layout to your web pages. In this tutorial series, you'll learn how to transform plain HTML into beautifully styled websites.
 
-::: highlight-box
+<div class="highlight-box">
 Before starting CSS, make sure you:
 
 - Understand basic HTML structure
 - Have completed the [HTML Basics](/tutorials/beginner/html-basics/) tutorials
 - Are comfortable using your text editor
-  :::
+
+</div>
 
 ## What You'll Learn
 

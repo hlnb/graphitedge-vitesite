@@ -1,6 +1,6 @@
 ---
 title: Links and Images
-description: Learn how to add hyperlinks and images to your web pages
+description: Learn how to add links and images to your web pages
 difficulty: beginner
 tags: ['html', 'web fundamentals']
 duration: '45 minutes'
@@ -8,175 +8,196 @@ prev:
   text: 'Text Elements'
   link: '../03-text-elements/'
 next:
-  text: 'Document Structure'
-  link: '../05-document-structure/'
+  text: 'Lists and Tables'
+  link: '../05-lists-tables/'
 ---
 
 # Links and Images
 
-## Hyperlinks
+## Understanding Links
 
-Links are created with the `<a>` tag and the `href` attribute:
+HTML links (anchor tags) allow users to navigate between pages and resources. Let's explore different types of links:
+
+<div class="codepen-wrapper">
+<iframe height="400" 
+        style="width: 100%;" 
+        scrolling="no" 
+        title="HTML-Basics-04-links" 
+        src="https://codepen.io/hlnbee/embed/bNbNrdM?default-tab=html%2Cresult" 
+        frameborder="no" 
+        loading="lazy" 
+        allowtransparency="true" 
+        allowfullscreen="true">
+</iframe>
+</div>
+
+<div class="highlight-box">
+<h3>Link Types and Attributes</h3>
+<ul>
+<li><code>href</code> - The URL the link points to</li>
+<li><code>target="_blank"</code> - Opens link in new tab</li>
+<li><code>mailto:</code> - Creates email links</li>
+<li><code>tel:</code> - Creates phone number links</li>
+</ul>
+</div>
+
+## Interactive Exercise: Restaurant Navigation
+
+Create a navigation section for a restaurant website:
+
+- Menu link
+- Reservation link
+- Contact information links
+- Social media links
+
+<div class="codepen-wrapper">
+<iframe height="400" 
+        style="width: 100%;" 
+        scrolling="no" 
+        title="HTML-Basics-04-links-exercise" 
+        src="https://codepen.io/hlnbee/embed/XJrJamv?default-tab=html%2Cresult" 
+        frameborder="no" 
+        loading="lazy" 
+        allowtransparency="true" 
+        allowfullscreen="true">
+</iframe>
+</div>
+
+<div class="tip-box">
+<h3>Best Practices for Links</h3>
+<ul>
+<li>Use descriptive link text (avoid "click here")</li>
+<li>Make links visually distinct</li>
+<li>Use target="_blank" for external links</li>
+<li>Ensure links are keyboard accessible</li>
+</ul>
+</div>
+
+## Working with Images
+
+Images make your web pages visually engaging. Here's how to use them effectively:
+
+<div class="codepen-wrapper">
+<iframe height="400" 
+        style="width: 100%;" 
+        scrolling="no" 
+        title="HTML-Basics-04-images" 
+        src="https://codepen.io/hlnbee/embed/pvzvrJq?default-tab=html%2Cresult"
+        frameborder="no" 
+        loading="lazy" 
+        allowtransparency="true" 
+        allowfullscreen="true">
+</iframe>
+</div>
+
+<div class="highlight-box">
+<h3>Image Attributes</h3>
+<ul>
+<li><code>src</code> - Image source URL</li>
+<li><code>alt</code> - Alternative text description</li>
+<li><code>width</code> and <code>height</code> - Image dimensions</li>
+<li><code>&lt;figure&gt;</code> and <code>&lt;figcaption&gt;</code> - Image with caption</li>
+</ul>
+</div>
+
+## Interactive Exercise: Restaurant Gallery
+
+Create a gallery section for a restaurant:
+
+- Restaurant exterior
+- Featured dishes
+- Interior shots
+- Chef profiles
+
+<div class="codepen-wrapper">
+<iframe height="400" 
+        style="width: 100%;" 
+        scrolling="no" 
+        title="HTML-Basics-04-images-exercise" 
+        src="https://codepen.io/hlnbee/embed/PwYwKZO?default-tab=html%2Cresult" 
+        frameborder="no" 
+        loading="lazy" 
+        allowtransparency="true" 
+        allowfullscreen="true">
+</iframe>
+</div>
+
+<div class="tip-box">
+<h3>Best Practices for Images</h3>
+<ul>
+<li>Always include meaningful alt text</li>
+<li>Use appropriate image formats (JPG, PNG, WebP)</li>
+<li>Optimize images for web use</li>
+<li>Consider responsive image techniques</li>
+</ul>
+</div>
+
+## Combining Links and Images
+
+Often, you'll want to make images clickable. Here's how:
+
+<div class="codepen-wrapper">
+<iframe height="400" 
+        style="width: 100%;" 
+        scrolling="no" 
+        title="HTML-Basics-04-linked-images" 
+        src="https://codepen.io/hlnbee/embed/jENELWe?default-tab=html%2Cresult" 
+        frameborder="no" 
+        loading="lazy" 
+        allowtransparency="true" 
+        allowfullscreen="true">
+</iframe>
+</div>
+
+## Practice Project: Restaurant Homepage Header
+
+Create a header section that includes:
+
+1. Restaurant logo (linked to home)
+2. Navigation menu
+3. Social media icons (linked)
+4. Contact information
+5. Featured image
+
+<details>
+<summary>Click to see a solution</summary>
 
 ```html
-<a href="https://example.com">Click here</a>
-```
+<header>
+	<a href="index.html">
+		<img src="logo.png" alt="Black Swan Bistro logo" width="200" />
+	</a>
 
-### Types of Links
+	<nav>
+		<a href="#menu">Menu</a>
+		<a href="#reservations">Book a Table</a>
+		<a href="#about">About Us</a>
+		<a href="#contact">Contact</a>
+	</nav>
 
-1. **External Links** (to other websites):
+	<div class="social">
+		<a href="https://instagram.com/blackswanbistro" target="_blank">
+			<img src="instagram.png" alt="Follow us on Instagram" width="32" />
+		</a>
+		<a href="https://facebook.com/blackswanbistro" target="_blank">
+			<img src="facebook.png" alt="Like us on Facebook" width="32" />
+		</a>
+	</div>
 
-```html
-<a href="https://www.westernaustralia.com">Visit Western Australia</a>
-```
+	<div class="contact">
+		<a href="tel:+61234567890">📞 (02) 3456 7890</a>
+		<a href="mailto:info@blackswanbistro.com">✉️ Email Us</a>
+	</div>
 
-2. **Internal Links** (to pages on your site):
-
-```html
-<a href="/menu.html">View Our Menu</a>
-```
-
-3. **Email Links**:
-
-```html
-<a href="mailto:info@blackswanbistro.com.au">Email Us</a>
-```
-
-4. **Phone Links**:
-
-```html
-<a href="tel:+61893214567">Call Us</a>
-```
-
-::: tip Best Practice
-Always make your link text descriptive. Avoid using "click here" or "read more" alone.
-:::
-
-## Images
-
-Images are added with the `<img>` tag:
-
-```html
-<img src="swan.jpg" alt="Black Swan on the river" />
-```
-
-The `alt` attribute provides:
-
-- Text for screen readers
-- Fallback if image fails to load
-- SEO benefits
-
-### Image Formats
-
-- `.jpg` - Photos and complex images
-- `.png` - Graphics, logos, transparency
-- `.gif` - Simple animations
-- `.svg` - Scalable graphics, logos
-- `.webp` - Modern format for web images
-
-## File Paths
-
-Understanding file paths is crucial for links and images:
-
-```
-your-site/
-├── index.html
-├── menu.html
-├── images/
-│   ├── logo.png
-│   └── restaurant.jpg
-└── about/
-    └── contact.html
-```
-
-### Path Examples
-
-```html
-<!-- From index.html -->
-<img src="images/logo.png" />
-<!-- Relative path -->
-<img src="/images/logo.png" />
-<!-- Root-relative path -->
-<img src="https://example.com/logo.png" />
-<!-- Absolute path -->
-```
-
-## Project: Enhancing Black Swan Bistro
-
-Let's add images and links to our bistro page:
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Black Swan Bistro</title>
-	</head>
-	<body>
-		<h1>Black Swan Bistro</h1>
-
+	<figure class="hero">
 		<img
-			src="images/restaurant-front.jpg"
-			alt="Black Swan Bistro riverside dining area"
+			src="restaurant-front.jpg"
+			alt="Black Swan Bistro storefront at sunset"
+			width="1200"
 		/>
-
-		<h2>The Restaurant</h2>
-		<p>
-			The Black Swan Bistro offers casual lunch and dinner fare in a relaxed
-			riverside atmosphere. The menu changes seasonally to highlight the
-			freshest Western Australian ingredients.
-		</p>
-
-		<h2>Quick Links</h2>
-		<ul>
-			<li><a href="menu.html">Our Menu</a></li>
-			<li><a href="reservations.html">Make a Reservation</a></li>
-			<li><a href="https://maps.google.com">Find Us</a></li>
-			<li><a href="tel:+61893214567">Call Us</a></li>
-		</ul>
-	</body>
-</html>
+		<figcaption>Welcome to Black Swan Bistro</figcaption>
+	</figure>
+</header>
 ```
 
-## Image Best Practices
-
-1. **Size Images Appropriately**
-
-   - Don't use larger images than needed
-   - Consider mobile users
-
-2. **Use Descriptive Alt Text**
-
-   ```html
-   <!-- Good -->
-   <img src="dish.jpg" alt="Grilled Cone Bay Barramundi with native herbs" />
-
-   <!-- Not as helpful -->
-   <img src="dish.jpg" alt="Fish dish" />
-   ```
-
-3. **Specify Image Dimensions**
-   ```html
-   <img src="logo.png" width="200" height="100" alt="Black Swan Bistro logo" />
-   ```
-
-## Try It Yourself
-
-1. Add the restaurant logo to your page
-2. Create a navigation menu with links
-3. Add images of featured dishes
-4. Create an email contact link
-
-## What's Next?
-
-In the next lesson, we'll learn about document structure and semantic HTML to better organize our content.
-
-::: info Practice
-Before moving on:
-
-1. Create a gallery of food images
-2. Add social media links
-3. Create a contact section with various link types
-4. Experiment with different image formats
-   :::
+</details>

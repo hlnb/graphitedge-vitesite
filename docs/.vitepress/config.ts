@@ -55,53 +55,35 @@ export default defineConfig({
     sidebar: {
       '/tutorials/': [
         {
-          text: 'Tutorial Overview',
-          items: [
-            { text: 'All Tutorials', link: '/tutorials/' }
-          ]
-        },
-        {
-          text: 'Getting Started',
-          items: [
-            { text: 'Overview', link: '/tutorials/getting-started/' },
-            { text: 'Development Setup', link: '/tutorials/getting-started/01-development-setup/' },
-            { text: 'Web Basics', link: '/tutorials/getting-started/02-web-basics/' },
-            { text: 'Text Editors', link: '/tutorials/getting-started/03-text-editors/' },
-            { text: 'Browser Tools', link: '/tutorials/getting-started/04-browser-tools/' }
-          ]
-        },
-        {
           text: 'HTML Basics',
-          collapsed: true,
+          collapsed: false,
           items: [
             { text: 'Introduction', link: '/tutorials/beginner/html-basics/01-introduction/' },
-            { text: 'Your First HTML Page', link: '/tutorials/beginner/html-basics/02-first-page/' },
-            { text: 'Text Elements', link: '/tutorials/beginner/html-basics/03-text-elements/' },
-            { text: 'Links and Images', link: '/tutorials/beginner/html-basics/04-links-images/' },
-            { text: 'Document Structure', link: '/tutorials/beginner/html-basics/05-document-structure/' },
-            { text: 'HTML Forms', link: '/tutorials/beginner/html-basics/06-forms/' }
+            { text: 'Text and Headings', link: '/tutorials/beginner/html-basics/02-text-headings/' },
+            { text: 'Links and Images', link: '/tutorials/beginner/html-basics/03-links-images/' },
+            { text: 'Lists and Tables', link: '/tutorials/beginner/html-basics/04-lists-tables/' },
+            { text: 'Forms and Inputs', link: '/tutorials/beginner/html-basics/06-forms-inputs/' },
+            { text: 'Project - Discover Rottnest Island', link: '/tutorials/beginner/html-basics/07-RottoRocks/' }  
           ]
         },
         {
-          text: 'CSS Fundamentals',
-          collapsed: true,
+          text: 'CSS Basics',
+          collapsed: false,
           items: [
-            { text: 'Overview', link: '/tutorials/beginner/css-basics/' },
-            { text: 'Introduction to CSS', link: '/tutorials/beginner/css-basics/01-introduction/' },
-            { text: 'Selectors & Properties', link: '/tutorials/beginner/css-basics/02-selectors/' },
-            { text: 'Colors & Typography', link: '/tutorials/beginner/css-basics/03-colors-typography/' },
-            { text: 'The CSS Box Model', link: '/tutorials/beginner/css-basics/04-box-model/' },
-            { text: 'Flexbox Basics', link: '/tutorials/beginner/css-basics/05-flexbox-basics/' },1
-            // ... other CSS tutorials
+            { text: 'Introduction', link: '/tutorials/beginner/css-basics/01-introduction/' },
+            { text: 'Selectors', link: '/tutorials/beginner/css-basics/02-selectors/' },
+            { text: 'Colors and Typography', link: '/tutorials/beginner/css-basics/03-colors-typography/' },
+            { text: 'Box Model', link: '/tutorials/beginner/css-basics/04-box-model/' },
+            { text: 'Flexbox Basics', link: '/tutorials/beginner/css-basics/05-flexbox-basics/' },
+            { text: 'Project - Discover Rottnest Island', link: '/tutorials/beginner/css-basics/06-RottoRocks/' }
           ]
         },
         {
           text: 'JavaScript Basics',
-          collapsed: true,
+          collapsed: false,
           items: [
-            { text: 'Overview', link: '/tutorials/beginner/javascript-basics/' },
             { text: 'Introduction', link: '/tutorials/beginner/javascript-basics/01-introduction/' },
-            { text: 'Variables & Data Types', link: '/tutorials/beginner/javascript-basics/02-variables-data-types/' },
+            { text: 'Variables and Data Types', link: '/tutorials/beginner/javascript-basics/02-variables-data-types/' },
             { text: 'Control Flow', link: '/tutorials/beginner/javascript-basics/03-control-flow/' },
             { text: 'Functions', link: '/tutorials/beginner/javascript-basics/04-functions/' },
             { text: 'DOM Basics', link: '/tutorials/beginner/javascript-basics/05-dom-basics/' },
@@ -109,25 +91,14 @@ export default defineConfig({
           ]
         },
         {
-          text: 'Intermediate CSS',
-          collapsed: true,
+          text: 'CSS Advanced',
+          collapsed: false,
           items: [
-            { text: 'Overview', link: '/tutorials/intermediate/css-advanced/' },
             { text: 'CSS Grid', link: '/tutorials/intermediate/css-advanced/01-grid/' },
             { text: 'Advanced Flexbox', link: '/tutorials/intermediate/css-advanced/02-advanced-flexbox/' },
             { text: 'Responsive Design', link: '/tutorials/intermediate/css-advanced/03-responsive-design/' },
             { text: 'CSS Variables', link: '/tutorials/intermediate/css-advanced/04-css-variables/' },
             { text: 'Transitions & Animations', link: '/tutorials/intermediate/css-advanced/05-animations/' }
-          ]
-        },
-        {
-          text: 'Resources',
-          collapsed: true,
-          items: [
-            { 
-              text: 'Project Assets',
-              link: '/resources/'
-            }
           ]
         }
       ],
@@ -151,7 +122,9 @@ export default defineConfig({
             { text: 'Your First HTML Page', link: '/tutorials/beginner/html-basics/02-first-page/' },
             { text: 'Text Elements', link: '/tutorials/beginner/html-basics/03-text-elements/' },
             { text: 'Links and Images', link: '/tutorials/beginner/html-basics/04-links-images/' },
-            { text: 'Document Structure', link: '/tutorials/beginner/html-basics/05-document-structure/' }
+            { text: 'Document Structure', link: '/tutorials/beginner/html-basics/05-document-structure/' },
+            { text: 'Forms and Inputs', link: '/tutorials/beginner/html-basics/06-forms-inputs/' },
+            { text: 'Project - Discover Rottnest Island', link: '/tutorials/beginner/html-basics/07-RottoRocks/' }  
           ]
         }
       ],
@@ -185,7 +158,7 @@ export default defineConfig({
       ],
       '/tutorials/intermediate/css-advanced/': [
         {
-          text: 'Intermediate CSS',
+          text: 'Advanced CSS Techniques',
           items: [
             { text: 'Overview', link: '/tutorials/intermediate/css-advanced/' },
             { text: 'CSS Grid', link: '/tutorials/intermediate/css-advanced/01-grid/' },

@@ -12,137 +12,202 @@ next:
   link: '../04-links-images/'
 ---
 
-# Text Elements
+# Text Elements and Headings
 
-## Headings
+## Understanding Heading Hierarchy
 
-HTML provides six levels of headings, from `<h1>` to `<h6>`:
+HTML provides six levels of headings, from `<h1>` to `<h6>`. Let's see how they work together:
 
-```html
-<h1>Main Title</h1>
-<h2>Major Section</h2>
-<h3>Subsection</h3>
-<h4>Sub-subsection</h4>
-<h5>Minor Section</h5>
-<h6>Smallest Heading</h6>
+<div class="codepen-wrapper">
+<iframe height="400" style="width: 100%;" scrolling="no" title="HTML-Basics-03-text-elements" src="https://codepen.io/hlnbee/embed/emOmRoX?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+</iframe>
+</div>
+
+<div class="tip-box">
+<h3>Best Practices for Headings</h3>
+<ul>
+<li>Use only one <code>&lt;h1&gt;</code> per page</li>
+<li>Don't skip heading levels (e.g., don't go from h2 to h4)</li>
+<li>Keep your heading hierarchy logical</li>
+<li>Use headings to create a clear content structure</li>
+</ul>
+</div>
+
+## Interactive Exercise: Restaurant Menu Headings
+
+Create a restaurant menu structure using appropriate heading levels:
+
+- Main title (Restaurant Name)
+- Sections (Appetizers, Main Courses, Desserts)
+- Subsections (Vegetarian Options, Chef's Specials)
+
+<div class="codepen-wrapper">
+<iframe height="400" style="width: 100%;" scrolling="no" title="HTML-Basics-03-restaurant-menu-exercise" src="https://codepen.io/hlnbee/embed/WbebOVJ?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+</iframe>
+</div>
+
+<details>
+<summary>Click to see a solution</summary>
+
+```html:graphitedge-workspace/graphitedge-new/docs/tutorials/beginner/html-basics/03-text-elements/index.md
+<h1>Black Swan Bistro</h1>
+
+<h2>Appetizers</h2>
+<h3>Chef's Specials</h3>
+<h3>Vegetarian Options</h3>
+
+<h2>Main Courses</h2>
+<h3>From the Grill</h3>
+<h3>Seafood Specialties</h3>
+
+<h2>Desserts</h2>
+<h3>House Favorites</h3>
 ```
 
-::: tip Best Practice
-Use only one `<h1>` per page, and maintain a logical heading hierarchy. Don't skip levels (like going from `<h2>` to `<h4>`).
-:::
-
-## Paragraphs and Line Breaks
-
-Paragraphs are created with the `<p>` tag:
-
-```html
-<p>
-	This is a paragraph. It can contain multiple sentences and will maintain
-	proper spacing.
-</p>
-<p>This is another paragraph. Notice the space between paragraphs.</p>
-```
-
-For line breaks within paragraphs, use `<br>`:
-
-```html
-<p>
-	First line<br />
-	Second line<br />
-	Third line
-</p>
-```
+</details>
 
 ## Text Formatting
 
-HTML provides several ways to emphasize text:
+HTML provides various ways to format and structure your text. Here's how to use them:
+
+<div class="codepen-wrapper">
+<iframe height="400" style="width: 100%;" scrolling="no" title="HTML-Basics-03-text-formats" src="https://codepen.io/hlnbee/embed/ogvgwRb?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+</iframe>
+</div>
+
+<div class="highlight-box">
+<h3>Key Text Elements</h3>
+<ul>
+<li><code>&lt;p&gt;</code> - Paragraphs</li>
+<li><code>&lt;strong&gt;</code> - Important text</li>
+<li><code>&lt;em&gt;</code> - Emphasized text</li>
+<li><code>&lt;br&gt;</code> - Line break</li>
+<li><code>&lt;hr&gt;</code> - Horizontal rule</li>
+<li><code>&lt;small&gt;</code> - Smaller text</li>
+<li><code>&lt;mark&gt;</code> - Highlighted text</li>
+</ul>
+</div>
+
+## Interactive Exercise: Restaurant Description
+
+Create a formatted description for a restaurant using various text elements:
+
+- Restaurant name (strong)
+- Tagline (emphasized)
+- Description paragraph
+- Special note (marked)
+- Hours (small text)
+- Separator (horizontal rule)
+
+<div class="codepen-wrapper">
+<iframe height="400" style="width: 100%;" scrolling="no" title="HTML-Basics-03-exercise-2" src="https://codepen.io/hlnbee/embed/pvzvrzQ?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+</iframe>
+</div>
+
+<details>
+<summary>Click to see a solution</summary>
 
 ```html
-<p>This text is <strong>very important</strong>.</p>
-<p>This text has <em>added emphasis</em>.</p>
-<p>This is <mark>highlighted</mark> text.</p>
+<p><strong>Black Swan Bistro</strong></p>
+<p><em>Where elegance meets culinary excellence</em></p>
+
+<p>
+	Experience fine dining in a relaxed atmosphere. Our chef creates seasonal
+	menus using the finest local ingredients.
+</p>
+
+<p><mark>Now taking bookings for Valentine's Day!</mark></p>
+
+<hr />
+
+<p>
+	<small>
+		Open Monday-Saturday: 5pm-10pm<br />
+		Sunday Brunch: 10am-3pm
+	</small>
+</p>
 ```
+
+</details>
+
+## Practice Project: Restaurant Homepage
+
+Combine everything you've learned to create a homepage for a restaurant:
+
+1. Use appropriate heading levels
+2. Format text for readability
+3. Include special announcements
+4. Add operating hours
+5. Create sections for different content
+
+<div class="tip-box">
+<h3>Remember</h3>
+<p>Focus on creating a clear structure with your headings and using text formatting to enhance readability and emphasis.</p>
+</div>
 
 ## Lists
 
+HTML provides two types of lists for organizing content:
+
 ### Unordered Lists
 
-Use `<ul>` for bullet points:
+Use `<ul>` for bullet points when the order doesn't matter:
 
-```html
+<div class="codepen-wrapper">
+<iframe height="400" style="width: 100%;" scrolling="no" title="HTML-Basics-03-lists-example" src="https://codepen.io/hlnbee/embed/emOmEYo?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+</iframe>
+</div>
+
+<div class="highlight-box">
+<h3>List Elements</h3>
 <ul>
-	<li>Coffee</li>
-	<li>Tea</li>
-	<li>Water</li>
+<li><code>&lt;ul&gt;</code> - Unordered list (bullet points)</li>
+<li><code>&lt;ol&gt;</code> - Ordered list (numbers)</li>
+<li><code>&lt;li&gt;</code> - List items</li>
 </ul>
-```
+</div>
 
-### Ordered Lists
+### Interactive Exercise: Restaurant Features and Menu
 
-Use `<ol>` for numbered lists:
+Create lists for your restaurant including:
+
+- Features list (unordered)
+- Daily specials (ordered)
+- Opening times (ordered)
+
+<div class="codepen-wrapper">
+<iframe height="400" style="width: 100%;" scrolling="no" title="HTML-Basics-03-lists-exercise" src="https://codepen.io/hlnbee/embed/VYZYzYK?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+</iframe>
+</div>
+
+<details>
+<summary>Click to see a solution</summary>
 
 ```html
+<!-- Restaurant Features -->
+<h2>Why Choose Us?</h2>
+<ul>
+	<li>Farm-to-table ingredients</li>
+	<li>Award-winning chef</li>
+	<li>Waterfront location</li>
+	<li>Private dining available</li>
+</ul>
+
+<!-- Daily Specials -->
+<h2>Today's Specials</h2>
 <ol>
-	<li>Preheat oven</li>
-	<li>Mix ingredients</li>
-	<li>Bake for 20 minutes</li>
+	<li>Butternut Squash Soup</li>
+	<li>Grilled Sea Bass</li>
+	<li>Chocolate Lava Cake</li>
+</ol>
+
+<!-- Opening Times -->
+<h2>Service Times</h2>
+<ol>
+	<li>Breakfast: 7am - 10am</li>
+	<li>Lunch: 12pm - 3pm</li>
+	<li>Dinner: 6pm - 10pm</li>
 </ol>
 ```
 
-## Project: Enhancing the Black Swan Bistro
-
-Let's add a menu section to our bistro page:
-
-```html
-<h2>Sample Menu</h2>
-<h3>Starters</h3>
-<ul>
-	<li>Fresh Fremantle Octopus with native herbs</li>
-	<li>Margaret River Brie with local honeycomb</li>
-	<li>Southwest Marron Bisque</li>
-</ul>
-
-<h3>Main Courses</h3>
-<ul>
-	<li>Grilled Cone Bay Barramundi</li>
-	<li>Stirling Ranges Beef Fillet</li>
-	<li>Rottnest Island Salt and Pepper Squid</li>
-</ul>
-```
-
-## Special Characters
-
-Sometimes you need special characters that aren't on your keyboard:
-
-```html
-<p>The dinner special &mdash; Exmouth Gulf Prawns</p>
-<p>Hours: 11am&ndash;9pm</p>
-<p>Fresh oysters &amp; champagne</p>
-```
-
-Common special characters:
-
-- `&mdash;` — (long dash)
-- `&ndash;` – (medium dash)
-- `&amp;` & (ampersand)
-- `&copy;` © (copyright)
-
-## Try It Yourself
-
-1. Add the menu section to your bistro page
-2. Create a list of local ingredients
-3. Add emphasis to key words
-4. Try using special characters
-
-## What's Next?
-
-In the next lesson, we'll learn how to add links and images to make our page more interactive and visually appealing.
-
-::: info Practice
-Before moving on:
-
-1. Create both ordered and unordered lists
-2. Try different text formatting options
-3. Add a new section to the bistro page using the elements learned
-4. Experiment with special characters
-   :::
+</details>
