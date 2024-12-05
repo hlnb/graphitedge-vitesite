@@ -222,6 +222,25 @@ p {
 }
 ```
 
+## Extension Project: Rotto Rocks Website
+
+### Content Resources
+
+Build a website for Rottnest Island (Rotto Rocks) using these content files:
+
+- [Main Content](./RottoRocks/content.txt) - Contains general information, history, and key facts about Rottnest Island
+- [Attractions](./RottoRocks/attractions.txt) - Details about beaches, trails, activities, and points of interest
+- [Visitor Information](./RottoRocks/visitor-info.txt) - Transport, accommodation, and practical visitor information
+
+::: tip Project Requirements
+
+1. Use semantic HTML to structure the content
+2. Create a responsive layout
+3. Include appropriate images (source your own)
+4. Implement navigation between different sections
+5. Style the content to be visually appealing and readable
+   :::
+
 ## Project Assets
 
 Coming soon:

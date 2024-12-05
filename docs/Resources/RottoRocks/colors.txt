@@ -1,0 +1,26 @@
+/* Rottnest Island Color Palette */
+
+/* Primary Colors */
+--primary-blue: #1B4965;     /* Deep Ocean Blue */
+--primary-sand: #F4D03F;     /* Warm Sand */
+--primary-coral: #FF8C69;    /* Coral Sunset */
+
+/* Secondary Colors */
+--secondary-aqua: #5FA8D3;   /* Shallow Water */
+--secondary-sage: #BEE5BF;   /* Coastal Vegetation */
+--secondary-shell: #FFF1E6;  /* Seashell White */
+
+/* Neutral Colors */
+--neutral-dark: #2C3E50;     /* Dark Rock */
+--neutral-medium: #95A5A6;   /* Weathered Wood */
+--neutral-light: #ECF0F1;    /* Beach Sand */
+
+/* Accent Colors */
+--accent-turquoise: #1ABC9C; /* Lagoon */
+--accent-yellow: #F1C40F;    /* Sunshine */
+--accent-coral: #E74C3C;     /* Island Flowers */
+
+/* Text Colors */
+--text-dark: #2C3E50;        /* Main Text */
+--text-light: #ECF0F1;       /* Light Text */
+--text-accent: #1B4965;      /* Headings */
