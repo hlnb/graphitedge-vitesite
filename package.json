@@ -14,6 +14,7 @@
   "dependencies": {
     "fast-glob": "^3.3.2",
     "mermaid": "^11.4.0",
-    "vitepress-plugin-mermaid": "^2.0.17"
+    "vitepress-plugin-mermaid": "^2.0.17",
+    "@rollup/rollup-linux-x64-gnu": "latest"
   }
 }
