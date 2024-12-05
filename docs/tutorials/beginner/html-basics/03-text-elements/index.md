@@ -49,7 +49,7 @@ Create a restaurant menu structure using appropriate heading levels:
 <details>
 <summary>Click to see a solution</summary>
 
-```html:graphitedge-workspace/graphitedge-new/docs/tutorials/beginner/html-basics/03-text-elements/index.md
+```html
 <h1>Black Swan Bistro</h1>
 
 <h2>Appetizers</h2>

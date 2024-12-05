@@ -32,49 +32,58 @@ Learn how to make your webpage interactive by responding to user actions.
 <h3>Setup for This Tutorial</h3>
 <p>Create a new file called `events-practice.html` with this starter code:</p>
 
-```html:graphitedge-workspace/graphitedge-new/docs/tutorials/beginner/javascript-basics/06-events/index.md
+```html
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Events Practice</title>
-    <style>
-        .highlight { background-color: #FFE4B5; }
-        .menu-item { padding: 10px; margin: 5px; border: 1px solid #ddd; }
-        .btn { padding: 5px 10px; margin: 5px; }
-    </style>
-</head>
-<body>
-    <h1 id="main-title">Black Swan Bistro</h1>
+	<head>
+		<title>Events Practice</title>
+		<style>
+			.highlight {
+				background-color: #ffe4b5;
+			}
+			.menu-item {
+				padding: 10px;
+				margin: 5px;
+				border: 1px solid #ddd;
+			}
+			.btn {
+				padding: 5px 10px;
+				margin: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1 id="main-title">Black Swan Bistro</h1>
 
-    <div id="menu-section">
-        <h2>Our Menu</h2>
-        <button id="add-item-btn" class="btn">Add Item</button>
+		<div id="menu-section">
+			<h2>Our Menu</h2>
+			<button id="add-item-btn" class="btn">Add Item</button>
 
-        <ul id="menu-list">
-            <li class="menu-item">Grilled Salmon - $24.99</li>
-            <li class="menu-item">Beef Steak - $29.99</li>
-            <li class="menu-item">Pasta Primavera - $19.99</li>
-        </ul>
-    </div>
+			<ul id="menu-list">
+				<li class="menu-item">Grilled Salmon - $24.99</li>
+				<li class="menu-item">Beef Steak - $29.99</li>
+				<li class="menu-item">Pasta Primavera - $19.99</li>
+			</ul>
+		</div>
 
-    <div id="order-form">
-        <h2>Place Order</h2>
-        <input type="text" id="customer-name" placeholder="Your name">
-        <select id="dish-select">
-            <option value="">Select a dish</option>
-            <option value="salmon">Grilled Salmon</option>
-            <option value="steak">Beef Steak</option>
-            <option value="pasta">Pasta Primavera</option>
-        </select>
-        <button id="order-btn" class="btn">Place Order</button>
-    </div>
+		<div id="order-form">
+			<h2>Place Order</h2>
+			<input type="text" id="customer-name" placeholder="Your name" />
+			<select id="dish-select">
+				<option value="">Select a dish</option>
+				<option value="salmon">Grilled Salmon</option>
+				<option value="steak">Beef Steak</option>
+				<option value="pasta">Pasta Primavera</option>
+			</select>
+			<button id="order-btn" class="btn">Place Order</button>
+		</div>
 
-    <div id="order-status"></div>
+		<div id="order-status"></div>
 
-    <script>
-        // Your JavaScript code will go here
-    </script>
-</body>
+		<script>
+			// Your JavaScript code will go here
+		</script>
+	</body>
 </html>
 ```
 

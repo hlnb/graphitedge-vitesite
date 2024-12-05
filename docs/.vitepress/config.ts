@@ -216,8 +216,6 @@ export default defineConfig({
       dark: 'github-dark'
     },
     toc: { level: [1, 2, 3] },
-    container: {
-      customTypes: true
-    }
+    container: {}
   }
 })

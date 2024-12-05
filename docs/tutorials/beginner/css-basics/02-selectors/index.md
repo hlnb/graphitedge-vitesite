@@ -175,34 +175,34 @@ Create styles for the bistro's menu page:
 
 1. **HTML Structure**:
 
-```html:graphitedge-workspace/graphitedge-new/docs/.vitepress/config.ts
+```html
 <header class="bistro-header">
-    <img src="/assets/resources/blackswan-logo.svg" alt="Black Swan Bistro">
-    <nav class="main-nav">
-        <ul>
-            <li><a href="#" class="nav-link active">Menu</a></li>
-            <li><a href="#" class="nav-link">About</a></li>
-            <li><a href="#" class="nav-link">Contact</a></li>
-        </ul>
-    </nav>
+	<img src="/assets/resources/blackswan-logo.svg" alt="Black Swan Bistro" />
+	<nav class="main-nav">
+		<ul>
+			<li><a href="#" class="nav-link active">Menu</a></li>
+			<li><a href="#" class="nav-link">About</a></li>
+			<li><a href="#" class="nav-link">Contact</a></li>
+		</ul>
+	</nav>
 </header>
 
 <main class="menu-content">
-    <h1>Our Menu</h1>
+	<h1>Our Menu</h1>
 
-    <section class="menu-section">
-        <h2>Appetizers</h2>
-        <div class="menu-item">
-            <h3>Garlic Bread</h3>
-            <p class="description">Fresh baked with herbs</p>
-            <p class="price">$6.99</p>
-        </div>
-        <div class="menu-item">
-            <h3>Bruschetta</h3>
-            <p class="description">Toasted bread with tomatoes</p>
-            <p class="price">$8.99</p>
-        </div>
-    </section>
+	<section class="menu-section">
+		<h2>Appetizers</h2>
+		<div class="menu-item">
+			<h3>Garlic Bread</h3>
+			<p class="description">Fresh baked with herbs</p>
+			<p class="price">$6.99</p>
+		</div>
+		<div class="menu-item">
+			<h3>Bruschetta</h3>
+			<p class="description">Toasted bread with tomatoes</p>
+			<p class="price">$8.99</p>
+		</div>
+	</section>
 </main>
 ```
 

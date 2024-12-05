@@ -35,32 +35,34 @@ Learn how to manipulate HTML elements with JavaScript.
 1. Create a new file called `dom-practice.html`
 2. Add this starter code:
 
-```html:graphitedge-workspace/graphitedge-new/docs/tutorials/beginner/javascript-basics/05-dom-basics/index.md
+```html
 <!DOCTYPE html>
 <html>
-<head>
-    <title>DOM Practice</title>
-</head>
-<body>
-    <h1 id="main-title">Black Swan Bistro</h1>
+	<head>
+		<title>DOM Practice</title>
+	</head>
+	<body>
+		<h1 id="main-title">Black Swan Bistro</h1>
 
-    <div id="menu-section">
-        <h2>Our Menu</h2>
-        <ul id="menu-list">
-            <li class="menu-item">Grilled Salmon</li>
-            <li class="menu-item">Beef Steak</li>
-            <li class="menu-item">Pasta Primavera</li>
-        </ul>
-    </div>
+		<div id="menu-section">
+			<h2>Our Menu</h2>
+			<ul id="menu-list">
+				<li class="menu-item">Grilled Salmon</li>
+				<li class="menu-item">Beef Steak</li>
+				<li class="menu-item">Pasta Primavera</li>
+			</ul>
+		</div>
 
-    <div id="special-section">
-        <p id="daily-special">Today's Special: <span id="special-item">Grilled Salmon</span></p>
-    </div>
+		<div id="special-section">
+			<p id="daily-special">
+				Today's Special: <span id="special-item">Grilled Salmon</span>
+			</p>
+		</div>
 
-    <script>
-        // Your JavaScript code will go here
-    </script>
-</body>
+		<script>
+			// Your JavaScript code will go here
+		</script>
+	</body>
 </html>
 ```
 
