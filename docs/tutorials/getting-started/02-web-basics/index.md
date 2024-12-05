@@ -49,7 +49,7 @@ Think of it like ordering from a restaurant:
 ## Core Web Technologies
 
 The three main technologies that power the web work together like this:
-![Web Technologies](../../../images/tutorials/getting-started/web-technologies.svg)
+![Web Technologies](../../../../../images/tutorials/getting-started/web-technologies.svg)
 
 ### HTML (Structure)
 
