@@ -37,11 +37,11 @@ Brief overview of the topic and why it's important.
 
 Content goes here...
 
-```code-group
+::: code-group
 //code example 1
 
 //Alternative code example
-```
+:::
 
 ## Subsection 1.2
 

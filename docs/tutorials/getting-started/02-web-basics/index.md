@@ -50,7 +50,7 @@ Think of it like ordering from a restaurant:
 
 The three main technologies that power the web work together like this:
 
-<img src="../../../.vitepress/public/images/tutorials/getting-started/web-technologies.svg" alt="Web Technologies" />
+<img src="/images/tutorials/getting-started/web-technologies.svg" alt="Web Technologies" />
 
 ### HTML (Structure)
 
